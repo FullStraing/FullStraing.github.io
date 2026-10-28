@@ -44,4 +44,4 @@ tests/            node:test suites, including checks on index.html
 
 ## Deploying
 
-Any static host works (Netlify, GitHub Pages, Vercel). Publish the folder as is; `tests/` and `package.json` are harmless but can be excluded.
+Live at **https://fullstraing.github.io/**, served by GitHub Pages from the `main` branch of `FullStraing/FullStraing.github.io`. Pushing to `main` redeploys. `.nojekyll` makes Pages serve the files as they are.
