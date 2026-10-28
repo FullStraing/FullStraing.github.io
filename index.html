@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Emirlan Togolokov — Issue 01</title>
+  <meta name="description" content="Emirlan Togolokov, software engineer and SJSU computer science student. Portfolio laid out as a printed magazine: BilimTube, Dowser, Schrödinger's Chess and Krug.">
+  <meta property="og:title" content="Emirlan Togolokov — Issue 01">
+  <meta property="og:description" content="Software engineer: Python and C++, full stack, AI and LLM integration. Four projects, one issue.">
+  <meta name="theme-color" content="#ece6d9">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/bodoni-moda.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/newsreader.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/cover.css">
+  <link rel="stylesheet" href="css/features.css">
+  <link rel="stylesheet" href="css/back-matter.css">
+  <link rel="stylesheet" href="css/widgets.css">
+  <script type="module" src="js/main.js"></script>
+</head>
+<body>
+  <a class="skip" href="#contents">Skip to contents</a>
+  <div class="progress" aria-hidden="true"><span></span></div>
+
+  <main>
+    <!-- p. 01 — Cover -->
+    <header class="cover page" id="cover" data-page="1" data-title="Cover">
+      <div class="cover__strip mono">
+        <span>Issue 01</span><span>Autumn 2026</span><span>San José, California</span><span>Free</span>
+      </div>
+      <h1 class="nameplate" aria-label="Emirlan Togolokov">
+        <span class="nameplate__first">Emirlan</span>
+        <span class="nameplate__last">Togolokov</span>
+      </h1>
+      <p class="cover__tagline">Software engineer · Python &amp; C++ · full stack · AI &amp; LLM integration</p>
+
+      <div class="cover__body">
+        <figure class="cover__photo">
+          <img src="assets/img/calhacks-hall.webp" width="1800" height="1350" alt="Emirlan standing between the light-up CAL HACKS letters in a hangar full of hackers" fetchpriority="high">
+        </figure>
+
+        <ul class="coverlines">
+          <li>
+            <a href="#bilimtube">
+              <span class="coverlines__kicker mono">Cover story · p. 04</span>
+              <span class="coverlines__head">Ten people, four months, one hundred lessons</span>
+              <span class="coverlines__dek">How BilimTube went from zero to its first 100 users</span>
+            </a>
+          </li>
+          <li>
+            <a href="#dowser">
+              <span class="coverlines__kicker mono">Climate · p. 08</span>
+              <span class="coverlines__head">Wells the maps forgot</span>
+            </a>
+          </li>
+          <li>
+            <a href="#chess">
+              <span class="coverlines__kicker mono">Games · p. 12</span>
+              <span class="coverlines__head">The engine nobody taught chess</span>
+            </a>
+          </li>
+          <li>
+            <a href="#krug">
+              <span class="coverlines__kicker mono">Business · p. 16</span>
+              <span class="coverlines__head">Six coffees, one card</span>
+            </a>
+          </li>
+        </ul>
+
+        <a class="sticker" href="#results">
+          <span class="mono">ICPC NERC</span>
+          <strong>2025</strong>
+          <span class="mono">Team finalist</span>
+        </a>
+      </div>
+
+      <div class="cover__foot">
+        <p class="mono">Inside: research · results · classifieds · letters</p>
+        <svg class="barcode" viewBox="0 0 120 40" aria-hidden="true" focusable="false">
+          <path d="M2 0v32M5 0v32M6 0v32M10 0v32M13 0v32M14 0v32M15 0v32M19 0v32M22 0v32M24 0v32M27 0v32M28 0v32M33 0v32M35 0v32M36 0v32M40 0v32M43 0v32M46 0v32M47 0v32M51 0v32M53 0v32M56 0v32M57 0v32M58 0v32M62 0v32M64 0v32M67 0v32M70 0v32M71 0v32M75 0v32M77 0v32M80 0v32M81 0v32M85 0v32M88 0v32M89 0v32M93 0v32M95 0v32M96 0v32M100 0v32M103 0v32M105 0v32M108 0v32M109 0v32M113 0v32M116 0v32M118 0v32" stroke="currentColor" stroke-width="1.2"/>
+          <text x="60" y="39.5" text-anchor="middle" font-size="6" font-family="IBM Plex Mono, monospace" fill="currentColor">0 2026 1001 4</text>
+        </svg>
+      </div>
+    </header>
+
+    <!-- p. 02 — Contents -->
+    <nav class="contents page" id="contents" data-page="2" data-title="Contents" aria-labelledby="contents-title">
+      <h2 class="section-label mono" id="contents-title">In this issue</h2>
+      <ol class="toc">
+        <li><a href="#letter"><span class="toc__page">03</span><span class="toc__title">From the editor</span><span class="toc__dek">Who is writing this, and why it looks like a magazine</span></a></li>
+        <li><a href="#bilimtube"><span class="toc__page">04</span><span class="toc__title">BilimTube</span><span class="toc__dek">Leading a 10-person team through an EdTech launch</span></a></li>
+        <li><a href="#dowser"><span class="toc__page">08</span><span class="toc__title">Dowser</span><span class="toc__dek">Finding orphaned oil wells on 1954 survey maps</span></a></li>
+        <li><a href="#chess"><span class="toc__page">12</span><span class="toc__title">Schrödinger's Chess</span><span class="toc__dek">An opponent that learns the rules while it plays</span></a></li>
+        <li><a href="#krug"><span class="toc__page">16</span><span class="toc__title">Krug</span><span class="toc__dek">Wallet loyalty cards for coffee shops in Bishkek</span></a></li>
+        <li><a href="#now"><span class="toc__page">19</span><span class="toc__title">Dispatch</span><span class="toc__dek">Now: an assessment agent at San José State</span></a></li>
+        <li><a href="#results"><span class="toc__page">20</span><span class="toc__title">Results</span><span class="toc__dek">Contests, finals and a makeathon</span></a></li>
+        <li><a href="#masthead"><span class="toc__page">21</span><span class="toc__title">Masthead</span><span class="toc__dek">Roles held and schools attended</span></a></li>
+        <li><a href="#classifieds"><span class="toc__page">22</span><span class="toc__title">Classifieds</span><span class="toc__dek">Tools for hire</span></a></li>
+        <li><a href="#letters"><span class="toc__page">23</span><span class="toc__title">Letters</span><span class="toc__dek">Write to the editor</span></a></li>
+      </ol>
+    </nav>
+
+    <!-- p. 03 — Editor's letter -->
+    <section class="letter page" id="letter" data-page="3" data-title="From the editor" aria-labelledby="letter-title">
+      <p class="section-label mono">From the editor</p>
+      <div class="letter__grid">
+        <figure class="letter__photo">
+          <img src="assets/img/calhacks-portrait.webp" width="1400" height="1050" loading="lazy" alt="Emirlan in front of the Cal Hacks 13.0 banner in San Francisco, holding his badge">
+          <figcaption class="mono">The editor at Cal Hacks 13.0, San Francisco, October 2026.</figcaption>
+        </figure>
+        <div class="letter__text">
+          <h2 id="letter-title" class="letter__head">I build things where people actually meet the software.</h2>
+          <div class="prose dropcap">
+            <p>I study computer science at San José State University and graduate in May 2030. Before that I spent three years at TSI AUCA in Bishkek, finished with honors and a 3.91 GPA, and spent most evenings either writing C++ for programming contests or teaching other people to code.</p>
+            <p>The work I am proudest of sits where software meets real users. I led the ten-person team that launched BilimTube, an education platform for children, and I personally interviewed about a hundred parents and kids to find out what they could not find or would not finish. Now I am the primary developer of an AI agent for adaptive assessment in an SJSU research group.</p>
+            <p>A résumé flattens all of that into bullet points, so this issue lays it out the way I would rather read it: a few long features, some numbers that can be checked, and three small machines you can play with along the way.</p>
+          </div>
+          <p class="signoff">— Emirlan Togolokov</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- p. 04 — Cover story: BilimTube -->
+    <article class="feature feature--bilim page" id="bilimtube" data-page="4" data-title="BilimTube" aria-labelledby="bilim-title">
+      <header class="feature__opener">
+        <p class="kicker mono">Cover story · EdTech · May 2025 – June 2026</p>
+        <h2 class="headline" id="bilim-title">Ten people, <em>four months,</em> one hundred lessons</h2>
+        <p class="standfirst">BilimTube is a video-learning platform for children aged four to thirteen. As technical lead I took it from an empty repository to launch, then to its first hundred users.</p>
+        <p class="byline mono">Role: technical lead · Winner, Dive into Silicon Valley</p>
+      </header>
+
+      <ul class="ticker" aria-label="BilimTube by the numbers">
+        <li><strong>10</strong><span class="mono">people on the team</span></li>
+        <li><strong>4</strong><span class="mono">months to launch</span></li>
+        <li><strong>100+</strong><span class="mono">short video lessons</span></li>
+        <li><strong>~100</strong><span class="mono">parents and kids interviewed</span></li>
+        <li><strong>100</strong><span class="mono">first users</span></li>
+      </ul>
+
+      <div class="feature__body">
+        <div class="prose columns dropcap">
+          <p>The brief was simple to say and hard to do: short, safe lessons for three age bands, a player children could use without help, and progress their parents could see. We were ten people, most of us students, and we had four months.</p>
+          <p>Before writing much code I sat with roughly a hundred parents and children and watched where they got stuck. The findings were unglamorous and decisive. Kids could not find lessons for their age, so age filtering moved to the front. They abandoned long videos, so lessons got shorter. Parents navigated differently from children, so navigation was reworked around both.</p>
+          <p>I built the backend in Django and PostgreSQL: the schema and REST APIs for courses, progress tracking and answer submission, with Redis holding session state. On the frontend, in React and TypeScript, I wrote the student dashboard, the course player, favorites and the authentication flow.</p>
+          <blockquote class="pullquote"><p>Malformed model output never reached the database.</p></blockquote>
+          <p>Language models generate lessons and grade children's free-form answers. Models occasionally return something that is not quite what was asked for, so every response passes schema validation and is retried when it fails. Nothing malformed is stored, which matters a great deal when the reader is seven.</p>
+          <p>We shipped in Docker through GitLab CI/CD, with pytest and Playwright covering the critical paths, and won Dive into Silicon Valley along the way.</p>
+        </div>
+
+        <aside class="sidebar" aria-label="BilimTube stack">
+          <figure class="framed">
+            <img src="assets/img/bilimtube-login.webp" width="640" height="560" loading="lazy" alt="BilimTube sign-in screen with its snow leopard mascot and the tagline Safe videos for learning and fun, in Russian">
+            <figcaption class="mono">Fig. 1 — The sign-in screen and its snow leopard. <a href="https://bilimtube-chi.vercel.app" target="_blank" rel="noopener">bilimtube-chi.vercel.app</a></figcaption>
+          </figure>
+          <dl class="specs">
+            <dt class="mono">Backend</dt><dd>Django, PostgreSQL, Redis, REST</dd>
+            <dt class="mono">Frontend</dt><dd>React, TypeScript</dd>
+            <dt class="mono">AI</dt><dd>LLM lesson generation and answer grading with schema validation and retries</dd>
+            <dt class="mono">Shipping</dt><dd>Docker, GitLab CI/CD, pytest, Playwright</dd>
+          </dl>
+        </aside>
+      </div>
+    </article>
+
+    <!-- p. 08 — Dowser (inverted spread) -->
+    <article class="feature feature--dowser page" id="dowser" data-page="8" data-title="Dowser" aria-labelledby="dowser-title">
+      <figure class="bleed">
+        <img src="assets/img/dowser-cover.webp" width="1600" height="1067" loading="lazy" alt="Dowser title card: an old topographic map with a magnified well symbol linked to a pin on satellite terrain, captioned Old maps. New leads.">
+      </figure>
+      <header class="feature__opener">
+        <p class="kicker mono">Climate · Cal Hacks 13.0 · San Francisco, Oct 23–25, 2026</p>
+        <h2 class="headline" id="dowser-title">Wells the <em>maps</em> forgot</h2>
+        <p class="standfirst">Abandoned oil and gas wells leak methane, and many were never recorded. Dowser reads 1950s survey maps to find candidates, ranks them for plugging crews and checks them in the field with a methane sensor. I owned the machine-learning pipeline.</p>
+        <p class="byline mono">Team project · My part: data preparation, labelling, detector training and evaluation</p>
+      </header>
+
+      <div class="feature__body">
+        <div class="prose columns dropcap">
+          <p>Old United States Geological Survey quadrangles mark oil wells with a small symbol. Many of those wells were later abandoned, and some never made it into today's state registry. If a detector can find the symbols, every symbol without a matching documented well is a lead worth checking.</p>
+          <p>We started with Kern County, California: the 1954 Oil Center and Oildale sheets and the 1992 Oil Center edition, all 1:24,000 GeoTIFFs. I cut them into 1024-pixel tiles with about 20 percent overlap, kept each tile's coordinate system so a detection maps back to latitude and longitude, and split the area geographically into 84 training, 13 validation and 30 test images, so the model is never graded on the neighborhood it learned from.</p>
+          <p>The detector is a fine-tuned YOLO11n. The first model learned from 568 hand-labelled boxes and reached an F1 of 0.60 on validation. Adding 49 reviewed labels raised it to 0.80, with recall of 0.90. Each training run took under a minute on a laptop.</p>
+          <blockquote class="pullquote"><p>Detections are candidates, not verified wells.</p></blockquote>
+          <p>Those are validation numbers, not a final test, and the honest caveats stay attached: the confident positives come from one era of maps, and digits, tanks and rectangular signs still fool the model. That is why the app ranks candidates for people to check rather than declaring anything found.</p>
+        </div>
+
+        <aside class="sidebar">
+          <div class="numbers" aria-label="Validation results">
+            <p class="mono numbers__title">By the numbers · validation set</p>
+            <p><strong>.60 → .80</strong><span class="mono">F1 score, baseline to selected model</span></p>
+            <p><strong>.72 / .90</strong><span class="mono">precision / recall at the chosen cutoff</span></p>
+            <p><strong>84 · 13 · 30</strong><span class="mono">train · validation · test images</span></p>
+            <p><strong>53 s</strong><span class="mono">to train the selected model</span></p>
+          </div>
+          <p class="mono sidebar__link"><a href="https://github.com/kunjalp/Dowser" target="_blank" rel="noopener">Source on GitHub ↗</a></p>
+        </aside>
+      </div>
+
+      <figure class="widget widget--wells" data-widget="wells" aria-labelledby="wells-caption">
+        <noscript><p class="mono">This figure needs JavaScript.</p></noscript>
+        <figcaption id="wells-caption" class="mono">Fig. 2 — Move the cutoff. Every detector trades false alarms for missed wells. <em>Illustration with invented points; the real results are in the box above.</em></figcaption>
+      </figure>
+    </article>
+
+    <!-- p. 12 — Schrödinger's Chess -->
+    <article class="feature feature--chess page" id="chess" data-page="12" data-title="Schrödinger's Chess" aria-labelledby="chess-title">
+      <header class="feature__opener">
+        <p class="kicker mono">Games · Hackathon theme: Impractical Inventions</p>
+        <h2 class="headline" id="chess-title">The engine nobody <em>taught</em> chess</h2>
+        <p class="standfirst">Every turn, each piece is handed a random way of moving. You win by capturing a secret piece that neither player can see. The opponent was never told any of the rules, and has to learn them while it plays you.</p>
+        <p class="byline mono">Plain JavaScript modules · no dependencies · every claim reproducible with one test command</p>
+      </header>
+
+      <div class="chess-spread">
+        <figure class="widget widget--chess" data-widget="chessboard" aria-labelledby="chess-caption">
+          <noscript><p class="mono">This figure needs JavaScript.</p></noscript>
+          <figcaption id="chess-caption" class="mono">Fig. 3 — Pick a piece to see where it may go this turn, then reroll the rules.</figcaption>
+        </figure>
+
+        <div class="prose dropcap">
+          <p>Normal engines are given the rules and then search. Here the rules change every turn, so there is a real learning problem. The agent sees a label (“this piece moves as a knight”) and has to work out what the label means, what wins the game, and which of your sixteen pieces is the secret one.</p>
+          <p>The trick that makes it learn within a single game is symmetry. A knight's jump to the upper right and its jump to the lower left are the same fact rotated, so 225 possible displacements collapse into 36 groups under the symmetries of the square. One observed jump teaches all eight.</p>
+          <p>To guess your secret piece it watches what you protect. People shield what they cannot afford to lose, and every capture that does not end the game rules a piece out.</p>
+          <blockquote class="pullquote"><p>With no budget for questions, the agent never gets past 50 percent.</p></blockquote>
+          <p>Each turn it may ask a few yes-or-no questions (“may I move this there?”) and it spends them where it is least certain. Watching legal moves alone never teaches it what is forbidden; it has to try illegal moves to learn that they are illegal.</p>
+        </div>
+      </div>
+
+      <div class="feature__body feature__body--split">
+        <table class="results-table">
+          <caption class="mono">Choosing what to ask · 400 questions, 30 seeds</caption>
+          <thead><tr><th scope="col">Strategy</th><th scope="col">Rule fidelity</th><th scope="col">Balanced accuracy</th></tr></thead>
+          <tbody>
+            <tr class="is-best"><th scope="row">Ask where least certain</th><td>95.0%</td><td>87.4%</td></tr>
+            <tr><th scope="row">…plus a novelty bonus</th><td>95.6%</td><td>84.9%</td></tr>
+            <tr><th scope="row">Ask at random</th><td>91.0%</td><td>76.2%</td></tr>
+            <tr><th scope="row">Coverage only</th><td>89.8%</td><td>71.5%</td></tr>
+          </tbody>
+        </table>
+        <aside class="sidebar">
+          <figure class="framed framed--tall">
+            <img src="assets/img/chess-interface.webp" width="1000" height="1334" loading="lazy" alt="Laptop screen at the hackathon showing the Schrödinger's Chess interface, a purple board with an opponent chat panel">
+            <figcaption class="mono">Fig. 4 — Demo night. Balanced accuracy climbs from 50% to 85–98% within one game. <a href="https://github.com/FullStraing/schrodingers-chess" target="_blank" rel="noopener">Source ↗</a></figcaption>
+          </figure>
+        </aside>
+      </div>
+    </article>
+
+    <!-- p. 16 — Krug -->
+    <article class="feature feature--krug page" id="krug" data-page="16" data-title="Krug" aria-labelledby="krug-title">
+      <header class="feature__opener">
+        <p class="kicker mono">Business · Bishkek · 2026</p>
+        <h2 class="headline" id="krug-title">Six coffees, <em>one card</em></h2>
+        <p class="standfirst">Paper loyalty cards get lost, and app-based ones need a download nobody wants. Krug puts a coffee shop's stamp card into Apple Wallet and Google Wallet. It is my own startup, and it is in the stage that matters most: talking to owners.</p>
+        <p class="byline mono">Founder · customer discovery with coffee shops in Bishkek</p>
+      </header>
+
+      <div class="krug-spread">
+        <figure class="widget widget--stamps" data-widget="stampcard" aria-labelledby="stamp-caption">
+          <noscript><p class="mono">This figure needs JavaScript.</p></noscript>
+          <figcaption id="stamp-caption" class="mono">Fig. 5 — Buy five coffees; the sixth is on the house. Redeeming starts a new card.</figcaption>
+        </figure>
+
+        <div class="prose dropcap">
+          <p>The idea: a guest saves the card once, from a link or a QR code. At the counter the barista scans it and confirms the purchase, and the card fills up on the guest's phone. Each coffee shop can have its own look, from warm brown to black-and-white minimalism.</p>
+          <p>The harder questions are not technical. What stops a cashier from stamping friends' cards when there is no cash-register integration? I wrote the threat model before any of that code: per-staff sign-in, single-use operations, owner-set limits and an activity log, with the remaining risk stated plainly to owners instead of promised away.</p>
+          <p>The concept site and a four-step video walkthrough are live, with an introductory offer for the first ten coffee shops.</p>
+          <p class="mono sidebar__link"><a href="https://emir-loyaltycards.netlify.app/" target="_blank" rel="noopener">See the live concept ↗</a></p>
+        </div>
+      </div>
+
+      <figure class="framed framed--wide">
+        <img src="assets/img/krug-designs.webp" width="1600" height="1067" loading="lazy" alt="Four branded Krug loyalty card designs: warm brown, black and white, matcha green and pastel bakery, each showing five of six stamps">
+        <figcaption class="mono">Fig. 6 — One system, four brands. Each card shows five of six stamps.</figcaption>
+      </figure>
+    </article>
+
+    <!-- p. 19 — Dispatch -->
+    <section class="dispatch page" id="now" data-page="19" data-title="Dispatch" aria-labelledby="now-title">
+      <p class="section-label mono">Dispatch · September 2026 – present</p>
+      <h2 class="dispatch__head" id="now-title">Now: an agent that adapts to the wrong answer you picked</h2>
+      <div class="prose columns">
+        <p>At San José State I am an undergraduate researcher in Prof. William Andreopoulos's AI-in-education group, and the primary developer of the AI agent at the core of its assessment system.</p>
+        <p>The agent offers students realistic answer choices and adapts to the one they pick, because a well-chosen wrong option says more about what a student misunderstands than a blank. Alongside it I support the group's research on evaluating language-model output, including a literature review on retrieval-augmented generation and LLM output quality.</p>
+      </div>
+    </section>
+
+    <!-- p. 20 — Results -->
+    <section class="results page" id="results" data-page="20" data-title="Results" aria-labelledby="results-title">
+      <h2 class="section-label mono" id="results-title">Results</h2>
+      <table class="scoreboard">
+        <thead><tr><th scope="col">Event</th><th scope="col">Result</th><th scope="col">Notes</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">ICPC NERC 2025</th><td class="scoreboard__big">9<small>/61</small></td><td>Team finalist in C++, Kyrgyzstan round</td></tr>
+          <tr><th scope="row">TSI Programming Contest 2026</th><td class="scoreboard__big">1st</td><td>Winner</td></tr>
+          <tr><th scope="row">Dive into Silicon Valley</th><td class="scoreboard__big">1st</td><td>Winner with BilimTube</td></tr>
+          <tr><th scope="row">Makeathon 2024</th><td class="scoreboard__big">1st</td><td>An electric mobility platform for people with limited mobility, built on Arduino Uno and Nano in three days. I wrote the control software and helped assemble the hardware.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- p. 21 — Masthead -->
+    <section class="masthead page" id="masthead" data-page="21" data-title="Masthead" aria-labelledby="masthead-title">
+      <h2 class="section-label mono" id="masthead-title">Masthead</h2>
+      <div class="masthead__grid">
+        <dl class="staffbox">
+          <div><dt class="mono">Undergraduate Researcher</dt><dd>San José State University <span class="mono">Sept 2026 – present</span></dd></div>
+          <div><dt class="mono">Technical Lead</dt><dd>BilimTube <span class="mono">May 2025 – June 2026</span></dd></div>
+          <div><dt class="mono">Mathematics Peer Instructor</dt><dd>TSI AUCA · calculus for 150+ first-year students <span class="mono">Feb 2024 – June 2026</span></dd></div>
+          <div><dt class="mono">Instructor</dt><dd>Geeks coding bootcamp · 200+ students in frontend and backend, three public classes <span class="mono">Oct 2022 – June 2023</span></dd></div>
+        </dl>
+        <dl class="staffbox staffbox--school">
+          <div><dt class="mono">B.S. Computer Science</dt><dd>San José State University <span class="mono">Expected May 2030</span></dd></div>
+          <div><dt class="mono">Software Engineering and Social Transformation</dt><dd>TSI AUCA, Bishkek · graduated with honors · GPA 3.91 / 4.00 <span class="mono">2023 – 2026</span></dd></div>
+          <div><dt class="mono">Coursework</dt><dd>Algorithms &amp; Data Structures I–II, Databases I–II, Machine Learning</dd></div>
+          <div><dt class="mono">Languages</dt><dd>Russian and Kyrgyz (native), English (fluent)</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- p. 22 — Classifieds -->
+    <section class="classifieds page" id="classifieds" data-page="22" data-title="Classifieds" aria-labelledby="classifieds-title">
+      <h2 class="section-label mono" id="classifieds-title">Classifieds · tools for hire</h2>
+      <div class="ads">
+        <div class="ad ad--tall">
+          <h3>Fluent in five</h3>
+          <p>Python, C++, TypeScript, JavaScript and SQL. C++ battle-tested at ICPC; Python for everything else.</p>
+        </div>
+        <div class="ad">
+          <h3>Models trained &amp; tamed</h3>
+          <p>PyTorch, TensorFlow, scikit-learn, Hugging Face, LLM APIs, RAG, prompt engineering.</p>
+        </div>
+        <div class="ad ad--inverse">
+          <h3>Backends built to order</h3>
+          <p>Django, FastAPI, Node.js, PostgreSQL, Redis, REST APIs.</p>
+        </div>
+        <div class="ad">
+          <h3>Frontends, reasonable rates</h3>
+          <p>React, Next.js, and hand-written HTML and CSS, as on this page.</p>
+        </div>
+        <div class="ad ad--red">
+          <h3>No subtitles needed</h3>
+          <p>Russian and Kyrgyz, native. English, fluent.</p>
+        </div>
+        <div class="ad ad--wide">
+          <h3>Ships with tests</h3>
+          <p>Docker, GitLab CI/CD, Linux, Git, pytest, Ruff, Playwright. Inquire within.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- p. 23 — Letters -->
+    <section class="letters page" id="letters" data-page="23" data-title="Letters" aria-labelledby="letters-title">
+      <h2 class="section-label mono" id="letters-title">Letters to the editor</h2>
+      <p class="letters__invite">Internships, research, a hard problem, or a coffee shop in Bishkek. Write in.</p>
+      <ul class="letters__links">
+        <li><a href="mailto:emir.togolokov00@gmail.com"><span class="mono">Email</span>emir.togolokov00@gmail.com</a></li>
+        <li><a href="https://github.com/FullStraing" target="_blank" rel="noopener"><span class="mono">GitHub</span>FullStraing</a></li>
+        <li><a href="https://bilimtube-chi.vercel.app" target="_blank" rel="noopener"><span class="mono">BilimTube</span>bilimtube-chi.vercel.app</a></li>
+        <li><a href="https://emir-loyaltycards.netlify.app/" target="_blank" rel="noopener"><span class="mono">Krug</span>emir-loyaltycards.netlify.app</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="colophon" id="colophon">
+    <p class="mono">Colophon — Set in Bodoni Moda, Newsreader and IBM Plex Mono. Built by hand in HTML, CSS and a few JavaScript modules; logic covered by node:test. No framework, no tracking. © 2026 Emirlan Togolokov.</p>
+    <a class="mono" href="#cover">Back to cover ↑</a>
+  </footer>
+
+  <div class="runninghead mono" aria-hidden="true">
+    <span>Emirlan Togolokov · Issue 01</span>
+    <span class="runninghead__title" data-folio-title>Cover</span>
+    <span class="runninghead__page" data-folio-page>p. 01</span>
+  </div>
+</body>
+</html>

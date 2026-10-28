@@ -1,0 +1,469 @@
+.widget {
+  margin: 0;
+}
+
+.widget > figcaption {
+  margin-top: var(--space-2);
+  color: var(--muted);
+  text-transform: none;
+  letter-spacing: 0.02em;
+}
+
+.btn {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.6rem 0.9rem;
+  border: 1.5px solid var(--ink);
+  background: var(--ink);
+  color: var(--paper);
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.1s ease;
+}
+
+.btn:hover:not(:disabled) {
+  background: var(--red);
+  border-color: var(--red);
+}
+
+.btn:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.btn--quiet {
+  background: transparent;
+  color: var(--ink);
+}
+
+.btn--coffee {
+  background: var(--coffee);
+  border-color: var(--coffee);
+}
+
+/* Fig. 2 — wells on a survey sheet, inside the dark Dowser spread */
+
+.widget--wells {
+  margin-top: var(--space-5);
+}
+
+.widget--wells > figcaption {
+  color: var(--paper-dark);
+}
+
+.wells {
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) minmax(16rem, 2fr);
+  border: 1px solid var(--paper);
+}
+
+.wells__map {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: #e9dfc6;
+}
+
+.contour {
+  fill: none;
+  stroke: #b2875a;
+  stroke-width: 0.9;
+  opacity: 0.75;
+}
+
+.contour--index {
+  stroke-width: 1.8;
+}
+
+.river {
+  fill: none;
+  stroke: #4a7fa8;
+  stroke-width: 2.4;
+  opacity: 0.8;
+}
+
+.well__symbol {
+  fill: none;
+  stroke: #1d1a16;
+  stroke-width: 1.6;
+}
+
+.well__box,
+.well__ring {
+  fill: none;
+  stroke-width: 2.2;
+  opacity: 0;
+  transition: opacity 0.18s ease;
+}
+
+.well.is-real.is-kept .well__box {
+  stroke: #1d1a16;
+  opacity: 1;
+}
+
+.well.is-false.is-kept .well__box {
+  stroke: var(--red);
+  opacity: 1;
+}
+
+.well.is-false.is-kept .well__symbol {
+  stroke: var(--red);
+}
+
+.well.is-real:not(.is-kept) .well__ring {
+  stroke: #4a7fa8;
+  stroke-dasharray: 3 3;
+  opacity: 1;
+}
+
+.wells__panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-3);
+  border-left: 1px solid var(--paper);
+}
+
+.wells__controls {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 0.4rem var(--space-2);
+}
+
+.wells__controls label {
+  grid-column: 1 / -1;
+}
+
+.wells__controls input[type="range"] {
+  width: 100%;
+  accent-color: #f0603f;
+}
+
+.wells__cutoff {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.wells__stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-2) var(--space-1);
+  margin: 0;
+  padding: var(--space-2) 0;
+  border-top: 1px solid var(--paper);
+  border-bottom: 1px solid var(--paper);
+}
+
+.wells__stats dt {
+  font-size: 0.6rem;
+  color: var(--paper-dark);
+}
+
+.wells__stats dd {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.7rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.1;
+}
+
+.wells__summary {
+  margin: 0;
+  font-style: italic;
+  font-size: 0.98rem;
+}
+
+.wells__legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1rem;
+  margin: auto 0 0;
+  font-size: 0.62rem;
+}
+
+.key::before {
+  content: "";
+  display: inline-block;
+  width: 0.7rem;
+  height: 0.7rem;
+  margin-right: 0.35rem;
+  vertical-align: -0.1rem;
+  border: 2px solid currentColor;
+}
+
+.key--tp::before {
+  border-color: var(--paper);
+}
+
+.key--fp::before {
+  border-color: #f0603f;
+}
+
+.key--fn::before {
+  border: 2px dashed #7fb0d6;
+  border-radius: 50%;
+}
+
+@media (max-width: 860px) {
+  .wells {
+    grid-template-columns: 1fr;
+  }
+
+  .wells__panel {
+    border-left: 0;
+    border-top: 1px solid var(--paper);
+  }
+}
+
+/* Fig. 3 — chess with rules that change every turn */
+
+.chess {
+  border: var(--hairline);
+  padding: var(--space-2);
+  background: var(--paper-light);
+}
+
+.board__bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-1);
+  margin-bottom: var(--space-2);
+}
+
+.board__buttons {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.board {
+  display: grid;
+  border: 2px solid var(--ink);
+}
+
+.board__row {
+  display: grid;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+}
+
+.sq {
+  position: relative;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1;
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  cursor: pointer;
+  color: var(--ink);
+}
+
+.sq--light {
+  background: #efe7d4;
+}
+
+.sq--dark {
+  background: #b9a68a;
+}
+
+.sq__glyph {
+  font-size: clamp(1.3rem, 4.6vw, 2.5rem);
+  line-height: 1;
+  font-family: "Apple Symbols", "Segoe UI Symbol", "DejaVu Sans", serif;
+  transition: transform 0.15s ease;
+}
+
+.piece--b .sq__glyph {
+  color: #16130f;
+}
+
+.piece--w .sq__glyph {
+  color: #fffdf6;
+  -webkit-text-stroke: 1.2px #16130f;
+  paint-order: stroke fill;
+}
+
+.sq__origin {
+  position: absolute;
+  top: 2px;
+  left: 3px;
+  font-family: var(--font-mono);
+  font-size: clamp(0.45rem, 1.1vw, 0.6rem);
+  color: var(--ink-soft);
+  opacity: 0.8;
+}
+
+.sq:hover .sq__glyph {
+  transform: translateY(-2px);
+}
+
+.sq.is-selected {
+  box-shadow: inset 0 0 0 3px var(--red);
+}
+
+.sq.is-target::after {
+  content: "";
+  position: absolute;
+  width: 28%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--red);
+  opacity: 0.85;
+}
+
+.sq.is-target:has(.sq__glyph)::after {
+  width: 86%;
+  background: transparent;
+  border: 3px solid var(--red);
+}
+
+.board__status {
+  min-height: 3em;
+  margin: var(--space-2) 0 0.3rem;
+  font-style: italic;
+}
+
+.board__note {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.6rem;
+}
+
+/* Fig. 5 — a Krug stamp card, rubber stamps in red ink */
+
+.loyalty {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.loyalty__card {
+  padding: var(--space-3);
+  border-radius: 14px;
+  background: #f7f0e1;
+  border: 1.5px solid var(--coffee);
+  box-shadow: 6px 6px 0 var(--coffee);
+  color: var(--coffee);
+}
+
+.loyalty__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-bottom: 1px dashed var(--coffee);
+  padding-bottom: 0.4rem;
+}
+
+.loyalty__brand {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  font-weight: 900;
+  font-style: italic;
+  line-height: 1;
+}
+
+.loyalty__rule {
+  margin: var(--space-2) 0;
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.stamps {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.slot {
+  position: relative;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1;
+  border: 1.5px dashed var(--coffee);
+  border-radius: 50%;
+}
+
+.slot.is-filled {
+  border-style: solid;
+}
+
+.slot--reward {
+  border-width: 2px;
+  border-style: double;
+}
+
+.slot--reward.is-ready {
+  background: var(--coffee);
+  color: #f7f0e1;
+  animation: pulse 1.6s ease-in-out infinite;
+}
+
+.stamp {
+  display: grid;
+  place-items: center;
+  width: 82%;
+  aspect-ratio: 1;
+  border: 2.5px solid var(--red);
+  border-radius: 50%;
+  color: var(--red);
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-style: italic;
+  font-size: clamp(1rem, 2.4vw, 1.5rem);
+  transform: rotate(var(--tilt, 0deg));
+  opacity: 0.88;
+  mix-blend-mode: multiply;
+}
+
+.stamp--new {
+  animation: thump 0.32s cubic-bezier(0.2, 1.6, 0.4, 1) both;
+}
+
+.card__status {
+  margin: var(--space-2) 0 0;
+  font-style: italic;
+  color: var(--ink-soft);
+}
+
+.loyalty__controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.card__tally {
+  margin: 0 0 0 auto;
+  color: var(--muted);
+}
+
+@keyframes thump {
+  from {
+    transform: rotate(var(--tilt, 0deg)) scale(1.8);
+    opacity: 0;
+  }
+  to {
+    transform: rotate(var(--tilt, 0deg)) scale(1);
+    opacity: 0.88;
+  }
+}
+
+@keyframes pulse {
+  50% {
+    transform: scale(1.07);
+  }
+}
