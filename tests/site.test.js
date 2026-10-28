@@ -57,7 +57,8 @@ test('every interactive widget has a mount point', () => {
 
 test('stylesheets, scripts and fonts are all served from the site itself', () => {
   const resources = [
-    ...[...html.matchAll(/<link\b[^>]*href="([^"]+)"/g)].map((m) => m[1]),
+    // Only links the browser downloads; rel="canonical" names the page's own public address.
+    ...[...html.matchAll(/<link\b(?=[^>]*rel="(?:stylesheet|preload|icon)")[^>]*href="([^"]+)"/g)].map((m) => m[1]),
     ...[...html.matchAll(/<script\b[^>]*src="([^"]+)"/g)].map((m) => m[1]),
   ];
   for (const url of resources) assert.ok(isLocal(url), `third-party resource ${url}`);
