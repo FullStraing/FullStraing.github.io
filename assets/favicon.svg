@@ -1,1 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" fill="#ece6d9"/><text x="32" y="49" text-anchor="middle" font-family="Didot, Bodoni 72, serif" font-size="48" font-style="italic" fill="#16130f">E</text><rect x="44" y="8" width="12" height="12" fill="#d23a1e"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+  <defs>
+    <linearGradient id="c" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fbfaf4"/><stop offset="1" stop-color="#bdb7a4"/></linearGradient>
+    <linearGradient id="s" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7fc4ff"/><stop offset=".55" stop-color="#2a7de1"/><stop offset="1" stop-color="#0d3f9e"/></linearGradient>
+  </defs>
+  <path d="M15 37h18l3 7H12z" fill="#a7a08b" stroke="#6f6853"/>
+  <rect x="2" y="3" width="44" height="35" rx="4" fill="url(#c)" stroke="#6f6853" stroke-width="1.5"/>
+  <rect x="6" y="7" width="36" height="27" rx="1.5" fill="url(#s)" stroke="#40566f"/>
+  <path d="M7 8h34v10C30 14 18 21 7 17z" fill="#fff" opacity=".28"/>
+</svg>

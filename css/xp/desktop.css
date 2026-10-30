@@ -1,0 +1,92 @@
+/* Desktop: wallpaper, icon column, Recycle Bin corner, window layer. */
+
+.desktop {
+  position: fixed;
+  inset: 0 0 var(--taskbar-h) 0;
+  /* clip, not hidden: focus inside an off-screen window must not scroll the desktop. */
+  overflow: clip;
+  background: var(--desktop-blue) url("../../assets/wallpaper.svg") center / cover no-repeat;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* The list itself lets clicks fall through to #desktop, so a click in a gap deselects. */
+.desktop__icons {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-rows: repeat(auto-fill, 84px);
+  grid-auto-columns: 84px;
+  gap: 2px 6px;
+  width: max-content;
+  height: 100%;
+  padding: 8px 6px;
+  pointer-events: none;
+}
+
+.desktop__icons > li { display: flex; justify-content: center; }
+
+.desktop__corner { position: absolute; right: 10px; bottom: 8px; width: 84px; }
+
+.icon {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  width: 80px;
+  padding: 3px 2px;
+  border: 0;
+  background: none;
+  color: #fff;
+  pointer-events: auto;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.icon__img { display: block; width: 40px; height: 40px; filter: drop-shadow(1px 2px 1px rgb(0 0 0 / 0.35)); }
+
+.icon__label {
+  display: block;
+  max-width: 100%;
+  padding: 0 3px 1px;
+  border: 1px dotted transparent;
+  font-size: 12px;
+  line-height: 1.25;
+  text-align: center;
+  overflow-wrap: anywhere;
+  text-shadow: 1px 1px 1px #000, 0 0 3px rgb(0 0 0 / 0.6);
+}
+
+.icon.is-selected .icon__img { filter: drop-shadow(1px 2px 1px rgb(0 0 0 / 0.35)) brightness(0.82) sepia(0.5) hue-rotate(180deg) saturate(2.4); }
+
+.icon.is-selected .icon__label { background: var(--select); text-shadow: none; }
+
+.icon:focus-visible { outline: none; }
+
+.icon:focus-visible .icon__label { border-color: #fff; }
+
+.icon.is-selected:focus-visible .icon__label { border-color: #ffd36b; }
+
+/* Window layer: covers the desktop but only the windows catch the pointer. */
+.windows { position: absolute; inset: 0; overflow: clip; pointer-events: none; }
+
+.windows > * { pointer-events: auto; }
+
+@media (max-width: 699px) {
+  .desktop__icons {
+    grid-auto-flow: row;
+    grid-template-rows: none;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-auto-columns: auto;
+    width: auto;
+    height: auto;
+    gap: 10px 4px;
+    padding: 12px 8px;
+  }
+
+  .desktop__corner { position: static; width: auto; }
+
+  .icon { width: 100%; }
+
+  .icon__img { width: 44px; height: 44px; }
+}

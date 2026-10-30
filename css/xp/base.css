@@ -1,0 +1,193 @@
+/* Base: palette, reset, type, shared controls. Luna-style blue, original artwork only. */
+
+:root {
+  color-scheme: light;
+
+  --font-ui: Tahoma, "Segoe UI", Verdana, sans-serif;
+  --font-title: "Trebuchet MS", Tahoma, sans-serif;
+  --font-mono: "Lucida Console", Consolas, "Courier New", monospace;
+
+  /* Frame and title bar */
+  --frame: #0831d9;
+  --frame-dark: #001ea0;
+  --title-1: #0058ee;
+  --title-2: #3a93ff;
+  --title-3: #0053ee;
+  --title-hi: #6aa8ff;
+  --frame-inactive: #7a96df;
+  --title-inactive-1: #7a96df;
+  --title-inactive-2: #9db9eb;
+  --title-text: #fff;
+
+  /* Window surfaces */
+  --face: #ece9d8;
+  --face-dark: #d6d2c2;
+  --face-shadow: #aca899;
+  --face-line: #919b9c;
+  --paper: #fff;
+  --ink: #000;
+  --ink-soft: #3c3c3c;
+  --muted: #555;
+  --link: #0b3eb0;
+
+  /* Selection, hover */
+  --select: #316ac5;
+  --select-text: #fff;
+  --hover-glow: #f8b33f;
+  --focus: #000;
+
+  /* Taskbar and start */
+  --taskbar-1: #3168d5;
+  --taskbar-2: #245edb;
+  --taskbar-3: #1941a5;
+  --taskbar-hi: #4f8bf0;
+  --tray-1: #0c59b9;
+  --tray-2: #0f8bed;
+  --tray-3: #139ee9;
+  --start-1: #3c9a3c;
+  --start-2: #57b847;
+  --start-3: #2d8a2d;
+
+  /* Explorer task pane and start menu */
+  --pane-1: #7ba2e7;
+  --pane-2: #6375d6;
+  --pane-box: #d6dff7;
+  --pane-title: #215dc6;
+  --menu-right: #d3e5fa;
+  --menu-border: #95bdee;
+  --menu-orange: #e8a24a;
+
+  --desktop-blue: #3a6ea5;
+  --taskbar-h: 30px;
+  --radius-top: 8px;
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+[hidden] { display: none !important; }
+
+html { height: 100%; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  min-height: 100%;
+  background: var(--desktop-blue);
+  color: var(--ink);
+  font-family: var(--font-ui);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.js body { overflow: hidden; }
+
+img,
+svg { max-width: 100%; }
+
+img { display: inline-block; vertical-align: middle; }
+
+button,
+input,
+textarea,
+select { font: inherit; color: inherit; }
+
+button { cursor: default; }
+
+a { color: var(--link); }
+
+h1,
+h2,
+h3,
+h4,
+p,
+ul,
+ol,
+dl,
+dd,
+figure { margin: 0; }
+
+ul,
+ol { padding: 0; list-style: none; }
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+:focus { outline: none; }
+
+:focus-visible { outline: 1px dotted var(--focus); outline-offset: 1px; }
+
+.mono { font-family: var(--font-mono); }
+
+/* XP push button */
+
+.xp-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-width: 75px;
+  min-height: 23px;
+  padding: 3px 12px;
+  border: 1px solid #003c74;
+  border-radius: 3px;
+  background: linear-gradient(180deg, #fff 0%, #f4f4f0 45%, #e3e2da 85%, #d6d0c5 100%);
+  box-shadow: inset 0 -1px 0 #d6d0c5;
+  color: var(--ink);
+  font-family: var(--font-ui);
+  font-size: 12px;
+  line-height: 1.2;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: default;
+}
+
+.xp-button:hover { box-shadow: inset 0 0 0 2px var(--hover-glow), inset 0 -1px 0 #d6d0c5; }
+
+.xp-button:active { background: linear-gradient(180deg, #cdcac3 0%, #e3e3db 30%, #f2f2ee 100%); box-shadow: inset 0 1px 2px rgb(0 0 0 / 0.2); }
+
+.xp-button:focus-visible { outline: 1px dotted var(--focus); outline-offset: -4px; }
+
+.xp-button--default { box-shadow: inset 0 0 0 2px #96bdf4, inset 0 -1px 0 #d6d0c5; }
+
+.xp-button:disabled,
+.xp-button[aria-disabled="true"] { border-color: #c9c7ba; color: #a19f92; box-shadow: none; }
+
+/* Toolbar button (explorer, project, mail) */
+
+.tool {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  min-height: 28px;
+  padding: 2px 8px 2px 4px;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  background: none;
+  color: var(--ink);
+  font-size: 12px;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.tool:hover { border-color: #cec9b8; background: linear-gradient(180deg, #fff, #ebe8d9); box-shadow: 0 1px 0 rgb(0 0 0 / 0.06); }
+
+.tool:active { background: #e3e0d2; box-shadow: inset 0 1px 2px rgb(0 0 0 / 0.15); }
+
+.tool__icon { width: 20px; height: 20px; flex: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+}

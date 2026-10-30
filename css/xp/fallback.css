@@ -1,0 +1,87 @@
+/* No-JS fallback page, the JS-mode #apps holder, and the shutdown screen. */
+
+/* JS mode: articles wait off-screen in #apps until a window adopts them. */
+.js .apps { display: none; }
+
+/* No-JS mode: no desktop chrome, every app is a stacked XP-style panel. */
+.no-js body { background: var(--desktop-blue) url("../../assets/wallpaper.svg") center / cover fixed no-repeat; }
+
+.no-js .desktop,
+.no-js .desktop__icons,
+.no-js .taskbar,
+.no-js .start-menu,
+.no-js .balloon,
+.no-js .shutdown { display: none; }
+
+.no-js .apps {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 24px 16px 48px;
+}
+
+.no-js .app {
+  min-height: 0;
+  overflow: hidden;
+  border: 3px solid var(--frame);
+  border-top-width: 0;
+  border-radius: var(--radius-top) var(--radius-top) 0 0;
+  box-shadow: 2px 4px 14px rgb(0 0 0 / 0.35);
+  container-type: inline-size;
+}
+
+.no-js .app__heading {
+  display: block;
+  padding: 7px 10px;
+  background: linear-gradient(180deg, var(--title-2) 0%, var(--title-1) 9%, #0054e9 45%, #0060f6 82%, #0036c8 100%);
+  box-shadow: inset 0 1px 0 var(--title-hi);
+  color: var(--title-text);
+  font-family: var(--font-title);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.2;
+  text-shadow: 1px 1px 0 #0a1883;
+}
+
+.no-js .app--sysprops > .app__heading { margin: -8px -8px 8px; }
+/* Without scripts the tabs cannot switch, so every panel is shown in order. */
+.no-js .app--sysprops .tabs { display: none; }
+.no-js .app--sysprops [role="tabpanel"][hidden] { display: grid !important; margin-top: 8px; }
+
+.no-js .mail { min-height: 0; }
+
+/* Shutdown screen */
+
+.shutdown {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  padding: 24px 16px;
+  background: #000;
+  color: #f39a2b;
+  text-align: center;
+}
+
+.shutdown__text {
+  max-width: 28ch;
+  font-family: var(--font-title);
+  font-size: clamp(18px, 4vw, 28px);
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.shutdown .xp-button { min-width: 120px; }
+
+.shutdown .xp-button:focus-visible { outline-color: #000; }
+
+body.is-shutdown { background: #000; }
+
+/* Without scripts the form cannot hand off to a mail app, so only the plain email link shows. */
+.no-js .mail__toolbar, .no-js .mail__field, .no-js .mail__body { display: none; }

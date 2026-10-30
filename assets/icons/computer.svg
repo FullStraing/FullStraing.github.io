@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+  <defs>
+    <linearGradient id="c" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fbfaf4"/><stop offset="1" stop-color="#bdb7a4"/></linearGradient>
+    <linearGradient id="s" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7fc4ff"/><stop offset=".55" stop-color="#2a7de1"/><stop offset="1" stop-color="#0d3f9e"/></linearGradient>
+    <linearGradient id="b" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e9e5d6"/><stop offset="1" stop-color="#a7a08b"/></linearGradient>
+  </defs>
+  <path d="M17 36h14l2 5H15z" fill="url(#b)" stroke="#6f6853" stroke-width="1" stroke-linejoin="round"/>
+  <rect x="11" y="40" width="26" height="4" rx="1.5" fill="url(#b)" stroke="#6f6853"/>
+  <rect x="4" y="4" width="40" height="33" rx="3.5" fill="url(#c)" stroke="#6f6853"/>
+  <rect x="8" y="8" width="32" height="24" rx="1.5" fill="url(#s)" stroke="#40566f"/>
+  <path d="M9 9h30v9C29 14 19 20 9 16z" fill="#fff" opacity=".28"/>
+  <circle cx="39" cy="34.5" r="1" fill="#3cc23c"/>
+</svg>
