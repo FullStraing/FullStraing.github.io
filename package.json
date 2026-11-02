@@ -7,7 +7,7 @@
     "start": "python3 -m http.server 8080",
     "test": "node --test tests/*.test.js",
     "coverage": "node --test --experimental-test-coverage tests/*.test.js",
-    "e2e": "node tests/e2e/desktop.e2e.mjs"
+    "e2e": "node tests/e2e/desktop.e2e.mjs && node tests/e2e/v21.e2e.mjs"
   },
   "devDependencies": {
     "playwright-core": "1.56.1"

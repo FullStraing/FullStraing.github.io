@@ -31,7 +31,10 @@
   <link rel="stylesheet" href="css/xp/taskbar.css">
   <link rel="stylesheet" href="css/xp/start-menu.css">
   <link rel="stylesheet" href="css/xp/apps.css">
+  <link rel="stylesheet" href="css/xp/document.css">
+  <link rel="stylesheet" href="css/xp/pictures.css">
   <link rel="stylesheet" href="css/xp/widgets.css">
+  <link rel="stylesheet" href="css/xp/pet.css">
   <link rel="stylesheet" href="css/xp/fallback.css">
 </head>
 <body>
@@ -41,7 +44,8 @@
     <ul class="desktop__icons" aria-label="Desktop">
       <li><button class="icon" type="button" data-open="about" aria-describedby="desktop-hint"><img class="icon__img" src="assets/icons/computer.svg" alt="" width="48" height="48"><span class="icon__label">About Me</span></button></li>
       <li><button class="icon" type="button" data-open="projects" aria-describedby="desktop-hint"><img class="icon__img" src="assets/icons/folder.svg" alt="" width="48" height="48"><span class="icon__label">My Projects</span></button></li>
-      <li><button class="icon" type="button" data-open="resume" aria-describedby="desktop-hint"><img class="icon__img" src="assets/icons/text.svg" alt="" width="48" height="48"><span class="icon__label">Résumé.txt</span></button></li>
+      <li><button class="icon" type="button" data-open="pictures" aria-describedby="desktop-hint"><img class="icon__img" src="assets/icons/pictures.svg" alt="" width="48" height="48"><span class="icon__label">My Pictures</span></button></li>
+      <li><button class="icon" type="button" data-open="resume" aria-describedby="desktop-hint"><img class="icon__img" src="assets/icons/document.svg" alt="" width="48" height="48"><span class="icon__label">Résumé.rtf</span></button></li>
       <li><button class="icon" type="button" data-open="awards" aria-describedby="desktop-hint"><img class="icon__img" src="assets/icons/folder.svg" alt="" width="48" height="48"><span class="icon__label">Awards</span></button></li>
       <li><button class="icon" type="button" data-open="now" aria-describedby="desktop-hint"><img class="icon__img" src="assets/icons/text.svg" alt="" width="48" height="48"><span class="icon__label">now.txt</span></button></li>
       <li><button class="icon" type="button" data-open="contact" aria-describedby="desktop-hint"><img class="icon__img" src="assets/icons/mail.svg" alt="" width="48" height="48"><span class="icon__label">Contact</span></button></li>
@@ -54,13 +58,13 @@
 
   <div class="start-menu" id="start-menu" hidden>
     <div class="start-menu__head">
-      <img class="start-menu__avatar" src="assets/img/calhacks-portrait.webp" alt="" width="48" height="48" loading="lazy" decoding="async">
+      <img class="start-menu__avatar" src="assets/img/thumbs/headshot.webp" alt="" width="48" height="48" loading="lazy" decoding="async">
       <span class="start-menu__user">Emirlan Togolokov</span>
     </div>
     <div class="start-menu__cols">
       <ul class="start-menu__left">
         <li><a class="start-item" href="#projects" data-open="projects"><img class="start-item__icon" src="assets/icons/folder.svg" alt="" width="32" height="32"><span class="start-item__text"><strong>My Projects</strong><small>4 projects</small></span></a></li>
-        <li><a class="start-item" href="#resume" data-open="resume"><img class="start-item__icon" src="assets/icons/text.svg" alt="" width="32" height="32"><span class="start-item__text"><strong>Résumé</strong><small>Education, work, skills</small></span></a></li>
+        <li><a class="start-item" href="#resume" data-open="resume"><img class="start-item__icon" src="assets/icons/document.svg" alt="" width="32" height="32"><span class="start-item__text"><strong>Résumé</strong><small>Education, work, skills</small></span></a></li>
         <li class="start-menu__sep" role="separator"></li>
         <li><a class="start-item" href="#bilimtube" data-open="bilimtube"><img class="start-item__icon" src="assets/img/bilimtube-login.webp" alt="" width="32" height="32" loading="lazy" decoding="async"><span class="start-item__text"><strong>BilimTube</strong><small>Video lessons for kids</small></span></a></li>
         <li><a class="start-item" href="#dowser" data-open="dowser"><img class="start-item__icon" src="assets/img/dowser-cover.webp" alt="" width="32" height="32" loading="lazy" decoding="async"><span class="start-item__text"><strong>Dowser</strong><small>Lost wells on old maps</small></span></a></li>
@@ -69,6 +73,7 @@
       </ul>
       <ul class="start-menu__right">
         <li><a class="start-item start-item--right" href="#about" data-open="about"><img class="start-item__icon" src="assets/icons/computer.svg" alt="" width="24" height="24"><span class="start-item__text"><strong>About Me</strong></span></a></li>
+        <li><a class="start-item start-item--right" href="#pictures" data-open="pictures"><img class="start-item__icon" src="assets/icons/pictures.svg" alt="" width="24" height="24"><span class="start-item__text"><strong>My Pictures</strong></span></a></li>
         <li><a class="start-item start-item--right" href="#awards" data-open="awards"><img class="start-item__icon" src="assets/icons/trophy.svg" alt="" width="24" height="24"><span class="start-item__text"><strong>Awards</strong></span></a></li>
         <li><a class="start-item start-item--right" href="#now" data-open="now"><img class="start-item__icon" src="assets/icons/text.svg" alt="" width="24" height="24"><span class="start-item__text"><strong>now.txt</strong></span></a></li>
         <li><a class="start-item start-item--right" href="#contact" data-open="contact"><img class="start-item__icon" src="assets/icons/mail.svg" alt="" width="24" height="24"><span class="start-item__text"><strong>Contact</strong></span></a></li>
@@ -104,7 +109,7 @@
         <button class="tab" type="button" role="tab" id="about-tab-skills" aria-controls="about-skills" aria-selected="false" tabindex="-1">Skills</button>
       </div>
       <div class="sysprops" role="tabpanel" tabindex="0" id="about-general" aria-labelledby="about-tab-general">
-        <img class="sysprops__photo" src="assets/img/calhacks-portrait.webp" alt="Emirlan in front of the Cal Hacks 13.0 banner in San Francisco, holding his badge" width="1400" height="1050" loading="lazy" decoding="async">
+        <img class="sysprops__photo" src="assets/img/headshot.webp" alt="Studio portrait of Emirlan in a navy shirt against a teal backdrop" width="1067" height="1600" loading="lazy" decoding="async">
         <div class="sysprops__info">
           <h3 class="sysprops__name">Emirlan Togolokov</h3>
           <dl class="sysprops__list">
@@ -161,7 +166,7 @@
             <ul class="taskpane__list">
               <li><a href="#about" data-open="about"><img src="assets/icons/computer.svg" alt="" width="16" height="16">About Me</a></li>
               <li><a href="#awards" data-open="awards"><img src="assets/icons/folder.svg" alt="" width="16" height="16">Awards</a></li>
-              <li><a href="#resume" data-open="resume"><img src="assets/icons/text.svg" alt="" width="16" height="16">Résumé</a></li>
+              <li><a href="#resume" data-open="resume"><img src="assets/icons/document.svg" alt="" width="16" height="16">Résumé</a></li>
             </ul>
           </section>
         </aside>
@@ -175,6 +180,93 @@
         </div>
       </div>
       <p class="statusbar"><span>4 objects</span><span>Open a project to see the details</span></p>
+    </article>
+
+    <!-- My Pictures -->
+    <article class="app app--explorer" id="pictures" data-title="My Pictures" data-icon="assets/icons/pictures.svg" data-width="820" data-height="580">
+      <h2 class="app__heading">My Pictures</h2>
+      <div class="explorer__menubar" aria-hidden="true"><span>File</span><span>Edit</span><span>View</span><span>Favorites</span><span>Tools</span><span>Help</span></div>
+      <div class="explorer__address"><span class="explorer__address-label">Address</span><span class="explorer__path"><img src="assets/icons/pictures.svg" alt="" width="16" height="16">Desktop › My Pictures</span></div>
+      <div class="explorer__main">
+        <aside class="explorer__tasks">
+          <section class="taskpane">
+            <h3 class="taskpane__title">Picture tasks</h3>
+            <ul class="taskpane__list">
+              <li><a href="#viewer" data-open="viewer"><img src="assets/icons/photo.svg" alt="" width="16" height="16">View as a slide show</a></li>
+            </ul>
+          </section>
+          <section class="taskpane">
+            <h3 class="taskpane__title">Other places</h3>
+            <ul class="taskpane__list">
+              <li><a href="#projects" data-open="projects"><img src="assets/icons/folder.svg" alt="" width="16" height="16">My Projects</a></li>
+              <li><a href="#about" data-open="about"><img src="assets/icons/computer.svg" alt="" width="16" height="16">About Me</a></li>
+            </ul>
+          </section>
+        </aside>
+        <div class="explorer__view">
+          <section class="photo-group" aria-labelledby="pics-me">
+            <h3 class="photo-group__title" id="pics-me">Me</h3>
+            <ul class="thumbs thumbs--photos">
+              <li><button class="thumb" type="button" data-photo="headshot" data-full="assets/img/headshot.webp" data-width="1067" data-height="1600" data-caption="Emirlan Togolokov, software engineer and CS student at San José State."><span class="thumb__frame"><img src="assets/img/thumbs/headshot.webp" alt="Studio portrait of Emirlan in a navy shirt against a teal backdrop" width="320" height="480" loading="lazy" decoding="async"></span><span class="thumb__label">Portrait</span></button></li>
+              <li><button class="thumb" type="button" data-photo="calhacks-portrait" data-full="assets/img/calhacks-portrait.webp" data-width="1400" data-height="1050" data-caption="At the Cal Hacks 13.0 banner in San Francisco, October 2026."><span class="thumb__frame"><img src="assets/img/thumbs/calhacks-portrait.webp" alt="Emirlan in front of the Cal Hacks 13.0 banner in San Francisco, holding his badge" width="480" height="360" loading="lazy" decoding="async"></span><span class="thumb__label">At the banner</span></button></li>
+            </ul>
+          </section>
+          <section class="photo-group" aria-labelledby="pics-calhacks">
+            <h3 class="photo-group__title" id="pics-calhacks">Cal Hacks 13.0</h3>
+            <ul class="thumbs thumbs--photos">
+              <li><button class="thumb" type="button" data-photo="calhacks-hall" data-full="assets/img/calhacks-hall.webp" data-width="1600" data-height="1200" data-caption="The Cal Hacks 13.0 hall: hundreds of teams building through the weekend."><span class="thumb__frame"><img src="assets/img/thumbs/calhacks-hall.webp" alt="Giant CAL HACKS letters on the floor of a huge hackathon hall" width="480" height="360" loading="lazy" decoding="async"></span><span class="thumb__label">The hall</span></button></li>
+              <li><button class="thumb" type="button" data-photo="calhacks-team" data-full="assets/img/calhacks-team.webp" data-width="1200" data-height="1600" data-caption="With teammates at Cal Hacks 13.0."><span class="thumb__frame"><img src="assets/img/thumbs/calhacks-team.webp" alt="Emirlan with three teammates in front of the Cal Hacks 13.0 banner" width="360" height="480" loading="lazy" decoding="async"></span><span class="thumb__label">The team</span></button></li>
+            </ul>
+          </section>
+          <section class="photo-group" aria-labelledby="pics-dowser">
+            <h3 class="photo-group__title" id="pics-dowser">Dowser</h3>
+            <ul class="thumbs thumbs--photos">
+              <li><button class="thumb" type="button" data-photo="dowser-cover" data-full="assets/img/dowser-cover.webp" data-width="1600" data-height="1067" data-caption="Dowser: old maps, new leads."><span class="thumb__frame"><img src="assets/img/thumbs/dowser-cover.webp" alt="Dowser title card: an old topographic map with a magnified well symbol" width="480" height="320" loading="lazy" decoding="async"></span><span class="thumb__label">Title card</span></button></li>
+              <li><button class="thumb" type="button" data-photo="dowser-command-map" data-full="assets/img/dowser-command-map.webp" data-width="1600" data-height="763" data-caption="Command map: candidate undocumented wells in Kern County, ranked by what matters most."><span class="thumb__frame"><img src="assets/img/thumbs/dowser-command-map.webp" alt="Dowser command map: satellite view of Kern County with candidate wells and filters" width="480" height="229" loading="lazy" decoding="async"></span><span class="thumb__label">Command map</span></button></li>
+              <li><button class="thumb" type="button" data-photo="dowser-field-map" data-full="assets/img/dowser-field-map.webp" data-width="603" data-height="1311" data-caption="Field app: the map a crew uses to reach the next candidate. Imagery © Esri, Maxar."><span class="thumb__frame"><img src="assets/img/thumbs/dowser-field-map.webp" alt="Dowser field app on a phone showing a map of nearby candidates" width="221" height="480" loading="lazy" decoding="async"></span><span class="thumb__label">Field map</span></button></li>
+              <li><button class="thumb" type="button" data-photo="dowser-field-detail" data-full="assets/img/dowser-field-detail.webp" data-width="603" data-height="1311" data-caption="Field app: checking a candidate on site with a simulated sensor reading."><span class="thumb__frame"><img src="assets/img/thumbs/dowser-field-detail.webp" alt="Dowser field app screen with a live sensor reading and Leaking or Not leaking buttons" width="221" height="480" loading="lazy" decoding="async"></span><span class="thumb__label">Field check</span></button></li>
+            </ul>
+          </section>
+          <section class="photo-group" aria-labelledby="pics-chess">
+            <h3 class="photo-group__title" id="pics-chess">Schrödinger&#x27;s Chess</h3>
+            <ul class="thumbs thumbs--photos">
+              <li><button class="thumb" type="button" data-photo="chess-title" data-full="assets/img/chess-title.webp" data-width="670" data-height="605" data-caption="Schrödinger&#x27;s Chess: every piece moves at random."><span class="thumb__frame"><img src="assets/img/thumbs/chess-title.webp" alt="Schrödinger&#x27;s Chess title screen in purple and orange pixel lettering" width="480" height="433" loading="lazy" decoding="async"></span><span class="thumb__label">Title screen</span></button></li>
+              <li><button class="thumb" type="button" data-photo="chess-interface" data-full="assets/img/chess-interface.webp" data-width="1000" data-height="1334" data-caption="Playing against the agent that learns the rules mid-game."><span class="thumb__frame"><img src="assets/img/thumbs/chess-interface.webp" alt="Schrödinger&#x27;s Chess on a laptop: a purple board with an opponent chat panel" width="360" height="480" loading="lazy" decoding="async"></span><span class="thumb__label">On a laptop</span></button></li>
+            </ul>
+          </section>
+          <section class="photo-group" aria-labelledby="pics-krug">
+            <h3 class="photo-group__title" id="pics-krug">Krug</h3>
+            <ul class="thumbs thumbs--photos">
+              <li><button class="thumb" type="button" data-photo="krug-designs" data-full="assets/img/krug-designs.webp" data-width="1600" data-height="1067" data-caption="One service, four branded card designs."><span class="thumb__frame"><img src="assets/img/thumbs/krug-designs.webp" alt="Four branded Krug loyalty card designs" width="480" height="320" loading="lazy" decoding="async"></span><span class="thumb__label">Four designs</span></button></li>
+              <li><button class="thumb" type="button" data-photo="krug-wallet-card" data-full="assets/img/krug-wallet-card.webp" data-width="730" data-height="1185" data-caption="A guest&#x27;s card in the wallet: 4 of 5 stamps."><span class="thumb__frame"><img src="assets/img/thumbs/krug-wallet-card.webp" alt="Phone screen with a brown Zerno coffee loyalty card showing 4 of 5 stamps and a QR code" width="296" height="480" loading="lazy" decoding="async"></span><span class="thumb__label">Wallet card</span></button></li>
+              <li><button class="thumb" type="button" data-photo="krug-staff-scan" data-full="assets/img/krug-staff-scan.webp" data-width="730" data-height="1185" data-caption="Staff view: the scan finds the card, the barista confirms the purchase."><span class="thumb__frame"><img src="assets/img/thumbs/krug-staff-scan.webp" alt="Phone screen of the staff view confirming a guest&#x27;s purchase" width="296" height="480" loading="lazy" decoding="async"></span><span class="thumb__label">Staff scan</span></button></li>
+              <li><button class="thumb" type="button" data-photo="krug-poster" data-full="assets/img/krug-poster.webp" data-width="820" data-height="1350" data-caption="Every coffee shop card, always at hand."><span class="thumb__frame"><img src="assets/img/thumbs/krug-poster.webp" alt="Poster of a phone wallet with stacked coffee shop cards" width="292" height="480" loading="lazy" decoding="async"></span><span class="thumb__label">Wallet stack</span></button></li>
+            </ul>
+          </section>
+          <section class="photo-group" aria-labelledby="pics-bilimtube">
+            <h3 class="photo-group__title" id="pics-bilimtube">BilimTube</h3>
+            <ul class="thumbs thumbs--photos">
+              <li><button class="thumb" type="button" data-photo="bilimtube-login" data-full="assets/img/bilimtube-login.webp" data-width="640" data-height="560" data-caption="BilimTube: video lessons for kids, launched by a team of 10 in four months."><span class="thumb__frame"><img src="assets/img/thumbs/bilimtube-login.webp" alt="BilimTube sign-in screen with its snow leopard mascot" width="480" height="420" loading="lazy" decoding="async"></span><span class="thumb__label">Sign-in</span></button></li>
+            </ul>
+          </section>
+        </div>
+      </div>
+      <p class="statusbar"><span>15 pictures</span><span>Open a picture to see it larger</span></p>
+    </article>
+
+    <!-- Photo Viewer -->
+    <article class="app app--viewer" id="viewer" data-title="Photo Viewer" data-icon="assets/icons/photo.svg" data-width="820" data-height="660">
+      <h2 class="app__heading">Photo Viewer</h2>
+      <figure class="viewer">
+        <div class="viewer__stage"><img class="viewer__img" src="assets/img/headshot.webp" alt="Studio portrait of Emirlan in a navy shirt against a teal backdrop" width="1067" height="1600" loading="lazy" decoding="async"></div>
+        <figcaption class="viewer__caption">Emirlan Togolokov, software engineer and CS student at San José State.</figcaption>
+      </figure>
+      <div class="viewer__bar">
+        <button class="tool" type="button" data-step="-1"><span aria-hidden="true">◀</span> Previous</button>
+        <p class="viewer__status visually-hidden" role="status"></p>
+        <span class="viewer__count">1 of 15</span>
+        <button class="tool" type="button" data-step="1">Next <span aria-hidden="true">▶</span></button>
+      </div>
     </article>
 
     <!-- BilimTube -->
@@ -224,6 +316,14 @@
           <p class="project__text">Abandoned wells leak methane, and many were never recorded. I tiled 1954 USGS maps of Kern County, labelled well symbols by hand and fine-tuned the detector. Detections are leads for field crews, not verified wells.</p>
         </div>
       </div>
+      <section class="project__photos" aria-labelledby="dowser-photos-title">
+        <h3 class="project__photos-title" id="dowser-photos-title">More photos</h3>
+        <ul class="thumbs thumbs--strip">
+          <li><button class="thumb" type="button" data-photo="dowser-command-map"><span class="thumb__frame"><img src="assets/img/thumbs/dowser-command-map.webp" alt="Dowser command map: satellite view of Kern County with candidate wells and filters" width="480" height="229" loading="lazy" decoding="async"></span><span class="thumb__label">Command map</span></button></li>
+          <li><button class="thumb" type="button" data-photo="dowser-field-map"><span class="thumb__frame"><img src="assets/img/thumbs/dowser-field-map.webp" alt="Dowser field app on a phone showing a map of nearby candidates" width="221" height="480" loading="lazy" decoding="async"></span><span class="thumb__label">Field map</span></button></li>
+          <li><button class="thumb" type="button" data-photo="dowser-field-detail"><span class="thumb__frame"><img src="assets/img/thumbs/dowser-field-detail.webp" alt="Dowser field app screen with a live sensor reading and Leaking or Not leaking buttons" width="221" height="480" loading="lazy" decoding="async"></span><span class="thumb__label">Field check</span></button></li>
+        </ul>
+      </section>
       <section class="project__demo" aria-labelledby="dowser-demo-title">
         <h3 class="project__demo-title" id="dowser-demo-title">Try it</h3>
         <figure class="widget widget--wells" data-widget="wells" aria-labelledby="wells-caption">
@@ -256,6 +356,12 @@
           <p class="project__text">Each turn every piece gets a random way of moving, and you win by capturing a secret piece. Symmetry lets the agent learn fast: one observed jump teaches all eight of its rotations. It spends a few yes-or-no questions per turn where it is least certain.</p>
         </div>
       </div>
+      <section class="project__photos" aria-labelledby="chess-photos-title">
+        <h3 class="project__photos-title" id="chess-photos-title">More photos</h3>
+        <ul class="thumbs thumbs--strip">
+          <li><button class="thumb" type="button" data-photo="chess-title"><span class="thumb__frame"><img src="assets/img/thumbs/chess-title.webp" alt="Schrödinger&#x27;s Chess title screen in purple and orange pixel lettering" width="480" height="433" loading="lazy" decoding="async"></span><span class="thumb__label">Title screen</span></button></li>
+        </ul>
+      </section>
       <section class="project__demo" aria-labelledby="chess-demo-title">
         <h3 class="project__demo-title" id="chess-demo-title">Try it</h3>
         <figure class="widget widget--chess" data-widget="chessboard" aria-labelledby="chess-caption">
@@ -288,6 +394,14 @@
           <p class="project__text">A guest saves the card once from a link or QR code, and the barista's scan fills it on their phone. I wrote the threat model before the code: per-staff sign-in, single-use operations, owner-set limits and an activity log.</p>
         </div>
       </div>
+      <section class="project__photos" aria-labelledby="krug-photos-title">
+        <h3 class="project__photos-title" id="krug-photos-title">More photos</h3>
+        <ul class="thumbs thumbs--strip">
+          <li><button class="thumb" type="button" data-photo="krug-wallet-card"><span class="thumb__frame"><img src="assets/img/thumbs/krug-wallet-card.webp" alt="Phone screen with a brown Zerno coffee loyalty card showing 4 of 5 stamps and a QR code" width="296" height="480" loading="lazy" decoding="async"></span><span class="thumb__label">Wallet card</span></button></li>
+          <li><button class="thumb" type="button" data-photo="krug-staff-scan"><span class="thumb__frame"><img src="assets/img/thumbs/krug-staff-scan.webp" alt="Phone screen of the staff view confirming a guest&#x27;s purchase" width="296" height="480" loading="lazy" decoding="async"></span><span class="thumb__label">Staff scan</span></button></li>
+          <li><button class="thumb" type="button" data-photo="krug-poster"><span class="thumb__frame"><img src="assets/img/thumbs/krug-poster.webp" alt="Poster of a phone wallet with stacked coffee shop cards" width="292" height="480" loading="lazy" decoding="async"></span><span class="thumb__label">Wallet stack</span></button></li>
+        </ul>
+      </section>
       <section class="project__demo" aria-labelledby="krug-demo-title">
         <h3 class="project__demo-title" id="krug-demo-title">Try it</h3>
         <figure class="widget widget--stamps" data-widget="stampcard" aria-labelledby="stamp-caption">
@@ -319,57 +433,121 @@
       <p class="statusbar"><span>4 objects</span><span>Three first places</span></p>
     </article>
 
-    <!-- Résumé.txt -->
-    <article class="app app--notepad" id="resume" data-title="Résumé.txt - Notepad" data-icon="assets/icons/text.svg" data-width="640" data-height="580">
+    <!-- Résumé.rtf -->
+    <article class="app app--document" id="resume" data-title="Résumé.rtf" data-icon="assets/icons/document.svg" data-width="760" data-height="640">
       <h2 class="app__heading">Résumé</h2>
-      <div class="notepad__menubar" aria-hidden="true"><span>File</span><span>Edit</span><span>Format</span><span>View</span><span>Help</span></div>
-<pre class="notepad__text">EMIRLAN TOGOLOKOV
-Software Engineer · San José, California
-emir.togolokov00@gmail.com · github.com/FullStraing
+      <div class="explorer__menubar" aria-hidden="true"><span>File</span><span>Edit</span><span>View</span><span>Insert</span><span>Format</span><span>Help</span></div>
+      <div class="explorer__toolbar document__toolbar">
+        <button class="tool" type="button" data-action="print"><img class="tool__icon" src="assets/icons/printer.svg" alt="" width="20" height="20">Print</button>
+        <a class="tool" href="mailto:emir.togolokov00@gmail.com"><img class="tool__icon" src="assets/icons/mail.svg" alt="" width="20" height="20">E-mail</a>
+        <a class="tool" href="https://github.com/FullStraing" target="_blank" rel="noopener"><img class="tool__icon" src="assets/icons/globe.svg" alt="" width="20" height="20">GitHub</a>
+      </div>
+      <div class="document__formatbar" aria-hidden="true">
+        <span class="document__field document__field--font">Tahoma</span>
+        <span class="document__field document__field--size">11</span>
+        <span class="document__fmt document__fmt--b">B</span><span class="document__fmt document__fmt--i">I</span><span class="document__fmt document__fmt--u">U</span>
+      </div>
+      <div class="document__ruler" aria-hidden="true"><span class="document__scale"></span></div>
+      <div class="document__workspace">
+        <div class="document__page">
+          <header class="cv__header">
+            <p class="cv__name">Emirlan Togolokov</p>
+            <p class="cv__role">Software Engineer · San José, California</p>
+            <p class="cv__contact"><a href="mailto:emir.togolokov00@gmail.com">emir.togolokov00@gmail.com</a> · <a href="https://github.com/FullStraing" target="_blank" rel="noopener">github.com/FullStraing</a></p>
+          </header>
 
-EDUCATION
-San José State University
-  B.S. Computer Science                       expected May 2030
-TSI AUCA, Bishkek
-  Software Engineering and Social Transformation    2023 – 2026
-  Graduated with honors · GPA 3.91 / 4.00
-  Algorithms &amp; Data Structures I–II, Databases I–II, ML
+          <section class="cv__section" aria-labelledby="cv-education">
+            <h3 class="cv__title" id="cv-education">Education</h3>
+            <ul class="cv__entries">
+              <li class="cv__entry">
+                <p class="cv__what"><strong>B.S. Computer Science</strong>, San José State University</p>
+                <p class="cv__when">expected May 2030</p>
+              </li>
+              <li class="cv__entry">
+                <p class="cv__what"><strong>Software Engineering and Social Transformation</strong>, TSI AUCA, Bishkek</p>
+                <p class="cv__when">2023 – 2026</p>
+                <p class="cv__desc">Graduated with honors · GPA 3.91 / 4.00</p>
+                <p class="cv__desc">Algorithms &amp; Data Structures I–II, Databases I–II, ML</p>
+              </li>
+            </ul>
+          </section>
 
-EXPERIENCE
-Undergraduate Researcher, San José State     Sept 2026 – present
-  Primary developer of an AI agent for adaptive assessment.
-Technical Lead, BilimTube                    May 2025 – June 2026
-  Led 10 people to launch in 4 months; first 100 users.
-Mathematics Peer Instructor, TSI AUCA        Feb 2024 – June 2026
-  Calculus for 150+ first-year students.
-Instructor, Geeks coding bootcamp            Oct 2022 – June 2023
-  Frontend and backend for 200+ students.
+          <section class="cv__section" aria-labelledby="cv-experience">
+            <h3 class="cv__title" id="cv-experience">Experience</h3>
+            <ul class="cv__entries">
+              <li class="cv__entry">
+                <p class="cv__what"><strong>Undergraduate Researcher</strong>, San José State</p>
+                <p class="cv__when">Sept 2026 – present</p>
+                <p class="cv__desc">Primary developer of an AI agent for adaptive assessment.</p>
+              </li>
+              <li class="cv__entry">
+                <p class="cv__what"><strong>Technical Lead</strong>, BilimTube</p>
+                <p class="cv__when">May 2025 – June 2026</p>
+                <p class="cv__desc">Led 10 people to launch in 4 months; first 100 users.</p>
+              </li>
+              <li class="cv__entry">
+                <p class="cv__what"><strong>Mathematics Peer Instructor</strong>, TSI AUCA</p>
+                <p class="cv__when">Feb 2024 – June 2026</p>
+                <p class="cv__desc">Calculus for 150+ first-year students.</p>
+              </li>
+              <li class="cv__entry">
+                <p class="cv__what"><strong>Instructor</strong>, Geeks coding bootcamp</p>
+                <p class="cv__when">Oct 2022 – June 2023</p>
+                <p class="cv__desc">Frontend and backend for 200+ students.</p>
+              </li>
+            </ul>
+          </section>
 
-PROJECTS
-Dowser               well-symbol detector, F1 0.60 → 0.80
-Schrödinger's Chess  agent learns changing rules in one game
-Krug                 Wallet loyalty cards for coffee shops
+          <section class="cv__section" aria-labelledby="cv-projects">
+            <h3 class="cv__title" id="cv-projects">Projects</h3>
+            <ul class="cv__entries">
+              <li class="cv__entry">
+                <p class="cv__what"><a href="#dowser" data-open="dowser"><strong>Dowser</strong></a></p>
+                <p class="cv__desc">Well-symbol detector, F1 0.60 → 0.80.</p>
+              </li>
+              <li class="cv__entry">
+                <p class="cv__what"><a href="#chess" data-open="chess"><strong>Schrödinger's Chess</strong></a></p>
+                <p class="cv__desc">An agent learns changing rules in one game.</p>
+              </li>
+              <li class="cv__entry">
+                <p class="cv__what"><a href="#krug" data-open="krug"><strong>Krug</strong></a></p>
+                <p class="cv__desc">Wallet loyalty cards for coffee shops.</p>
+              </li>
+            </ul>
+          </section>
 
-AWARDS
-ICPC NERC 2025                 team finalist, 9th of 61
-TSI Programming Contest 2026   1st
-Dive into Silicon Valley       1st, with BilimTube
-Makeathon 2024                 1st
+          <section class="cv__section" aria-labelledby="cv-awards">
+            <h3 class="cv__title" id="cv-awards">Awards</h3>
+            <ul class="cv__entries cv__entries--tight">
+              <li class="cv__entry"><p class="cv__what"><strong>ICPC NERC</strong>, team finalist, 9th of 61</p><p class="cv__when">2025</p></li>
+              <li class="cv__entry"><p class="cv__what"><strong>TSI Programming Contest</strong>, 1st</p><p class="cv__when">2026</p></li>
+              <li class="cv__entry"><p class="cv__what"><strong>Dive into Silicon Valley</strong>, 1st, with BilimTube</p><p class="cv__when">2025–26</p></li>
+              <li class="cv__entry"><p class="cv__what"><strong>Makeathon</strong>, 1st</p><p class="cv__when">2024</p></li>
+            </ul>
+          </section>
 
-SKILLS
-Languages  Python, C++, TypeScript, JavaScript, SQL
-AI / ML    PyTorch, TensorFlow, scikit-learn, Hugging Face,
-           LLM APIs, RAG, prompt engineering
-Backend    Django, FastAPI, Node.js, PostgreSQL, Redis, REST
-Frontend   React, Next.js, HTML, CSS
-Tooling    Docker, GitLab CI/CD, Linux, Git, pytest, Playwright
+          <section class="cv__section" aria-labelledby="cv-skills">
+            <h3 class="cv__title" id="cv-skills">Skills</h3>
+            <dl class="cv__skills">
+              <dt>Languages</dt><dd>Python, C++, TypeScript, JavaScript, SQL</dd>
+              <dt>AI / ML</dt><dd>PyTorch, TensorFlow, scikit-learn, Hugging Face, LLM APIs, RAG, prompt engineering</dd>
+              <dt>Backend</dt><dd>Django, FastAPI, Node.js, PostgreSQL, Redis, REST</dd>
+              <dt>Frontend</dt><dd>React, Next.js, HTML, CSS</dd>
+              <dt>Tooling</dt><dd>Docker, GitLab CI/CD, Linux, Git, pytest, Playwright</dd>
+            </dl>
+          </section>
 
-LANGUAGES
-Russian, Kyrgyz (native) · English (fluent)</pre>
+          <section class="cv__section" aria-labelledby="cv-languages">
+            <h3 class="cv__title" id="cv-languages">Languages</h3>
+            <p>Russian, Kyrgyz (native) · English (fluent)</p>
+          </section>
+        </div>
+      </div>
+      <p class="statusbar"><span>Page 1 of 1</span><span>For help, press F1</span></p>
     </article>
 
     <!-- now.txt -->
-    <article class="app app--notepad" id="now" data-title="now.txt - Notepad" data-icon="assets/icons/text.svg" data-width="480" data-height="340">
+    <article class="app app--notepad" id="now" data-title="now.txt - Notepad" data-icon="assets/icons/text.svg" data-width="560" data-height="340">
       <h2 class="app__heading">Now</h2>
       <div class="notepad__menubar" aria-hidden="true"><span>File</span><span>Edit</span><span>Format</span><span>View</span><span>Help</span></div>
 <pre class="notepad__text">now.txt · October 2026

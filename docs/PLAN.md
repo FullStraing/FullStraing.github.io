@@ -45,7 +45,7 @@ Each app is an `<article class="app app--KIND" id="ID">` inside `#apps`. In JS m
 | chess | Schrödinger's Chess | project | folder.svg | 860 × 620 |
 | krug | Krug | project | folder.svg | 860 × 620 |
 | awards | Awards | explorer | folder.svg | 620 × 380 |
-| resume | Résumé.txt - Notepad | notepad | text.svg | 640 × 580 |
+| resume | Résumé.rtf *(revised in v2.1)* | document | document.svg | 760 × 640 |
 | now | now.txt - Notepad | notepad | text.svg | 480 × 340 |
 | contact | New Message | mail | mail.svg | 580 × 480 |
 | recycle | Recycle Bin | explorer | recycle-bin.svg | 540 × 340 |
@@ -321,3 +321,54 @@ Window objects have the shape `{id,title,icon,x,y,width,height,z,minimized,maxim
 ## Content tone
 
 Short labels, at most 2–3 sentences per block, real facts only. Take them from the existing `index.html`. Do not publish the résumé phone number. The email `emir.togolokov00@gmail.com` and GitHub `FullStraing` are public.
+
+---
+
+# v2.1 additions (2026-11-01)
+
+Owner's requests:
+1. Something alive on the desktop that moves, sometimes reacts, and can be dragged.
+2. A mouse selection rectangle on the desktop: transparent and not blue.
+3. More photos, on topic.
+4. A more readable résumé document that still fits the theme.
+
+## 1. Desktop pet: Barsik the snow leopard
+
+- **Character:** an original cartoon snow leopard cub, drawn in inline SVG. The snow leopard is Kyrgyzstan's mountain cat. It is not a copy of any existing desktop assistant.
+- **Movement:** it walks along the ground (the bottom edge of the desktop, just above the taskbar), sits, grooms, sleeps after a long idle, and looks toward the cursor when it comes near.
+- **Dragging:** it can be picked up with mouse or touch. When dropped it falls under gravity, with a small bounce.
+- **Reactions:**
+  - a click or tap (with no drag), or Enter/Space, shows a speech bubble with a random short line, such as a site tip or a fact about Emirlan;
+  - a large drop shows "Whoa!";
+  - a newly opened window gets a short glance toward it;
+  - clicking it while asleep wakes it.
+- **Logic:** `js/lib/pet.js` is pure and deterministic. Time and random numbers are passed in. Tests are in `tests/pet.test.js`.
+- **UI:** `js/ui/pet.js` exports `mountPet({ layer, getBounds, onReady })` and returns `{ notifyWindowOpened(), destroy() }`.
+- **Styles:** `css/xp/pet.css`. The z-index is 5 *(revised after review: it was 8000, above windows, which blocked clicks on window buttons)*: above desktop icons, below windows. The Recycle Bin sits above him.
+- **Accessibility:** the pet is a `<button>` labelled "Barsik the snow leopard — press for a tip", and the bubble is a polite live region.
+- **Reduced motion:** with `prefers-reduced-motion`, it sits still but can still be poked and dragged.
+- **Background tabs:** the animation loop stops when `document.hidden`.
+
+## 2. Marquee selection
+
+- **Gesture:** a drag on empty desktop draws a rectangle.
+- **Look:** translucent white fill (`rgb(255 255 255 / 0.18)`) with a thin dotted white border. It is not blue.
+- **Selection:** icons that intersect the rectangle get `.is-selected`.
+- **Selected icons:** these are restyled to a translucent white highlight instead of blue, so selection looks the same everywhere.
+- **Geometry:** `js/lib/marquee.js` holds the pure geometry: `rectFromPoints(a, b)` and `intersects(r1, r2)`. Tests are in `tests/marquee.test.js`.
+
+## 3. Photos
+
+- **New window "My Pictures"** (`id="pictures"`, an explorer with thumbnails grouped by Cal Hacks, Dowser, Schrödinger's Chess and Krug).
+- **New window "Photo Viewer"** (`id="viewer"`): a large image, a caption, ◀ ▶ buttons, Left and Right arrow keys, and an "n of N" counter.
+- **Images:** full size in `assets/img/*.webp` (at most 1600 px) and thumbnails in `assets/img/thumbs/*.webp` (at most 480 px), both stripped of metadata.
+- **Thumbnails:** each is a `.thumb` launcher with `data-photo="<photo id>"` (a string id such as `headshot`, not an index).
+- **About:** now uses the studio headshot.
+- **Photos left out:** wallet passes with personal QR codes and unrelated personal pictures are not published.
+
+## 4. Readable résumé document
+
+- **Window:** "Résumé.txt - Notepad" becomes "Résumé.rtf", a period word-processor window. It has a menu bar, a toolbar with a working Print button, a ruler, and a white page on a grey background.
+- **Page:** real headings, comfortable 14 px Tahoma/Verdana text, and dates right-aligned.
+- **Print:** prints only the résumé.
+- **now.txt:** gets a larger, more readable Notepad text size.

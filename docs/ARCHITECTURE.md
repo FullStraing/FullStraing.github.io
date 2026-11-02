@@ -60,6 +60,9 @@ This has three consequences:
 | `js/lib/mailto.js` | Builds `mailto:` links. Validates the recipient, limits length, uses CRLF line breaks and encodes everything. |
 | `js/lib/clock.js` | Tray time in America/Los_Angeles. |
 | `js/lib/tabs.js` | Arrow, Home and End order for tab strips. |
+| `js/lib/marquee.js` | Rectangle from two points, strict overlap test, drag threshold. |
+| `js/lib/gallery.js` | Wrap-around stepping and the "n of N" counter for the Photo Viewer. |
+| `js/lib/pet.js` | Barsik's state machine (idle, walk, sit, groom, sleep, drag, fall, react). Time and randomness are passed in, so a seed replays the same life. |
 | `js/ui/windows-view.js` | Window frames: title bar, min/max/close, drag via pointer events, double-click on the title to maximize, focus on click. |
 | `js/ui/desktop.js` | Selecting and opening icons and thumbnails. |
 | `js/ui/taskbar.js` | Task buttons (click the active one to minimize it, any other to raise it), clock, welcome balloon. |
@@ -68,6 +71,10 @@ This has three consequences:
 | `js/ui/mail.js` | Contact form: hands the draft to the visitor's email app. |
 | `js/ui/shutdown.js` | The "safe to close this tab" screen. |
 | `js/ui/widgets.js` | Mounts the three demos. A failure in one demo is contained. |
+| `js/ui/marquee.js` | A drag on empty desktop draws the selection box and selects the icons it crosses. |
+| `js/ui/viewer.js` | Reads the photo list from the thumbnails in `#pictures`, so HTML stays the single source. Shows one photo with Previous/Next and the arrow keys. |
+| `js/ui/document.js` | The résumé's Print button. `document.css` limits printing to the résumé page. |
+| `js/ui/pet.js` | Draws Barsik in SVG and runs the animation loop, which pauses in background tabs. Handles pointer dragging and pokes, and shows the speech bubble. Started in its own try/catch, so it can never break the desktop. |
 
 ## Accessibility
 
@@ -95,3 +102,4 @@ This has three consequences:
 | `tests/chess`, `detections`, `stamps`, `rng` | Logic behind the demos |
 | `tests/site.test.js` | `index.html` structure: links resolve, every `data-open` names a window, alt text, no third-party resources, no phone number |
 | `tests/e2e/desktop.e2e.mjs` | Real Chrome at 1440 and 390 px: opening, dragging, minimizing, start menu, deep links, the contact form and the no-JS page |
+| `tests/e2e/v21.e2e.mjs` | Barsik (poke, drag, fall, reduced motion, below windows), selection box, My Pictures and the Photo Viewer, and printing the résumé. Shares `tests/e2e/harness.mjs` with the suite above. |

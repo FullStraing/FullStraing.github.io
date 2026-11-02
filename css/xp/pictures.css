@@ -1,0 +1,63 @@
+/* My Pictures folder, Photo Viewer, and the photo strips inside project windows. */
+
+.photo-group + .photo-group { margin-top: 18px; }
+
+.photo-group__title {
+  margin: 0 0 10px;
+  padding-bottom: 3px;
+  border-bottom: 1px solid #c5d5f0;
+  color: #1c3f94;
+  font-family: var(--font-title);
+  font-size: 13px;
+}
+
+.thumbs--photos { grid-template-columns: repeat(auto-fill, minmax(118px, 1fr)); }
+
+.thumbs--photos .thumb__frame { aspect-ratio: 1; }
+
+.thumbs--photos .thumb__frame img { object-fit: cover; }
+
+/* Project windows: a short strip of photos under the description. */
+.project__photos { padding: 0 12px 12px; }
+
+.project__photos-title { margin: 0 0 8px; color: #1c3f94; font-size: 12px; font-weight: 700; }
+
+.thumbs--strip { grid-template-columns: repeat(auto-fill, minmax(96px, 1fr)); gap: 10px; }
+
+.thumbs--strip .thumb__frame { aspect-ratio: 4 / 3; }
+
+/* Photo Viewer */
+.app--viewer { display: flex; flex-direction: column; height: 100%; background: #f3f2ec; }
+
+.viewer { display: flex; flex: 1; flex-direction: column; min-height: 0; margin: 0; }
+
+.viewer__stage {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  background: #fff;
+  border-bottom: 1px solid var(--face-line, #c9c5b5);
+}
+
+/* Pinned inside the stage so any photo, tall or wide, fits without pushing the caption and buttons out. */
+.viewer__img {
+  position: absolute;
+  inset: 12px;
+  width: calc(100% - 24px);
+  height: calc(100% - 24px);
+  object-fit: contain;
+}
+
+.viewer__caption { padding: 8px 12px 0; font-size: 13px; line-height: 1.45; text-align: center; }
+
+.viewer__bar { display: flex; align-items: center; justify-content: center; gap: 14px; padding: 8px 12px 10px; }
+
+.viewer__count { min-width: 72px; color: #444; font-size: 12px; text-align: center; }
+
+.no-js #viewer { display: none; }
+
+
+/* The studio portrait is tall; keep the face in frame wherever it is cropped. */
+.sysprops__photo { object-fit: cover; object-position: 50% 18%; }
+
+.start-menu__avatar { object-position: 50% 18%; }

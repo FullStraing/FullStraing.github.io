@@ -25,7 +25,8 @@
 
 .desktop__icons > li { display: flex; justify-content: center; }
 
-.desktop__corner { position: absolute; right: 10px; bottom: 8px; width: 84px; }
+/* Above Barsik (z 5) so he can walk behind the Recycle Bin without hiding it; still under windows. */
+.desktop__corner { position: absolute; z-index: 7; right: 10px; bottom: 8px; width: 84px; }
 
 .icon {
   position: relative;
@@ -36,7 +37,8 @@
   gap: 3px;
   width: 80px;
   padding: 3px 2px;
-  border: 0;
+  border: 1px solid transparent;
+  border-radius: 3px;
   background: none;
   color: #fff;
   pointer-events: auto;
@@ -57,15 +59,28 @@
   text-shadow: 1px 1px 1px #000, 0 0 3px rgb(0 0 0 / 0.6);
 }
 
-.icon.is-selected .icon__img { filter: drop-shadow(1px 2px 1px rgb(0 0 0 / 0.35)) brightness(0.82) sepia(0.5) hue-rotate(180deg) saturate(2.4); }
+.icon:hover { background: rgb(255 255 255 / 0.1); }
 
-.icon.is-selected .icon__label { background: var(--select); text-shadow: none; }
+/* Selection is a frosted white tile, not the period blue, so it reads on sky and on grass. */
+.icon.is-selected { border-color: rgb(255 255 255 / 0.55); background: rgb(255 255 255 / 0.22); }
+
+.icon.is-selected .icon__img { filter: drop-shadow(1px 2px 1px rgb(0 0 0 / 0.35)) brightness(1.08); }
 
 .icon:focus-visible { outline: none; }
 
 .icon:focus-visible .icon__label { border-color: #fff; }
 
 .icon.is-selected:focus-visible .icon__label { border-color: #ffd36b; }
+
+/* Rubber-band selection: translucent white, drawn by js/ui/marquee.js. */
+.marquee {
+  position: absolute;
+  z-index: 5;
+  border: 1px dotted rgb(255 255 255 / 0.9);
+  background: rgb(255 255 255 / 0.18);
+  box-shadow: 0 0 0 1px rgb(0 0 0 / 0.12);
+  pointer-events: none;
+}
 
 /* Window layer: covers the desktop but only the windows catch the pointer. */
 .windows { position: absolute; inset: 0; overflow: clip; pointer-events: none; }

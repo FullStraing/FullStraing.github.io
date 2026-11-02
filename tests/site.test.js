@@ -21,7 +21,7 @@ test('the page declares English, a real title and starts in no-js mode', () => {
 });
 
 test('every local file the page references exists', () => {
-  const refs = [...attrValues('href'), ...attrValues('src'), ...attrValues('data-icon')].filter(isLocal);
+  const refs = [...attrValues('href'), ...attrValues('src'), ...attrValues('data-icon'), ...attrValues('data-full')].filter(isLocal);
   assert.ok(refs.length > 0);
   for (const ref of refs) assert.ok(existsSync(join(root, ref.split('?')[0])), `missing ${ref}`);
 });
@@ -60,7 +60,7 @@ test('external links open safely', () => {
 });
 
 test('every app has a title, an icon and a window size', () => {
-  assert.equal(articles.length, 11);
+  assert.equal(articles.length, 13);
   for (const tag of articles) {
     assert.ok(attr(tag, 'id'), tag);
     assert.ok(attr(tag, 'data-title'), tag);
@@ -74,6 +74,17 @@ test('everything that opens a window names an app that exists', () => {
   const targets = attrValues('data-open');
   assert.ok(targets.length > 10);
   for (const target of targets) assert.ok(appIds.includes(target), `no app "${target}"`);
+});
+
+test('every photo thumbnail names a picture that My Pictures describes', () => {
+  const pictures = html.slice(html.indexOf('id="pictures"'), html.indexOf('</article>', html.indexOf('id="pictures"')));
+  const described = [...pictures.matchAll(/data-photo="([^"]+)"/g)].map((m) => m[1]);
+  assert.ok(described.length >= 12, `only ${described.length} photos in My Pictures`);
+  assert.equal(new Set(described).size, described.length, 'a photo is listed twice');
+  for (const tag of pictures.match(/<button\b[^>]*data-photo="[^"]+"[^>]*>/g)) {
+    for (const name of ['data-full', 'data-width', 'data-height', 'data-caption']) assert.match(tag, new RegExp(`${name}="[^"]+"`), tag);
+  }
+  for (const id of attrValues('data-photo')) assert.ok(described.includes(id), `no picture "${id}"`);
 });
 
 test('every interactive widget has a mount point', () => {

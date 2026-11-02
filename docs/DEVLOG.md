@@ -2,6 +2,74 @@
 
 How the site was made and why, newest first.
 
+## 2026-11-01 — v2.1: Barsik, selection box, photos, readable résumé
+
+**Request.** The owner asked for four things:
+1. something alive on the desktop that moves, sometimes reacts and can be dragged;
+2. a mouse selection box that is transparent, not blue;
+3. more photos, on topic;
+4. a résumé that is easier to read but still fits the theme.
+
+**How it was built.** The same everything-claude-code loop as v2:
+1. **Plan:** the contract was appended to [PLAN.md](PLAN.md) ("v2.1 additions").
+2. **Parallel build:**
+   - `tdd-guide` agent: Barsik's pure state machine `js/lib/pet.js`. 53 tests were written first: a 20,000-step random walk never leaves the bounds, and the same seed replays the same life. Then came the SVG character and animation loop (`js/ui/pet.js`, `css/xp/pet.css`).
+   - Document agent: the résumé as a "Résumé.rtf" word-processor window (`css/xp/document.css`, `js/ui/document.js`), with a working Print button that prints only the résumé. now.txt got a larger, more readable font.
+   - Lead:
+     - rubber-band selection, test first (`js/lib/marquee.js`, `js/ui/marquee.js`);
+     - the photo set;
+     - My Pictures and the Photo Viewer, with `js/lib/gallery.js` tested first;
+     - the photo strips in project windows;
+     - wiring in `main.js`.
+3. **Review and verification:** `code-reviewer`, `security-reviewer` and `e2e-runner` ran in parallel.
+
+**Photos.**
+- **Selection:** candidates were collected from the owner's folders and viewed on a contact sheet before anything was published.
+- **Published:**
+  - a studio headshot, now also used in About and the start menu;
+  - three Cal Hacks 13.0 photos;
+  - four Dowser images: the title card, the command map and two field-app screens;
+  - two Schrödinger's Chess images;
+  - four Krug images: card designs and demo-data wallet screens;
+  - the BilimTube sign-in screen.
+- **Left out:**
+  - wallet passes with personal QR codes;
+  - unrelated personal pictures;
+  - after the security review, a hacking-floor photo where the faces of other hackers who hadn't agreed to it were clearly visible.
+- **Format:** every image was re-encoded to WebP (full size at most 1600 px, thumbnails at most 480 px) with no EXIF, GPS or XMP. The review verified this chunk by chunk.
+
+**Decisions**
+
+| Decision | Why |
+|---|---|
+| Barsik is an original snow-leopard cub | Kyrgyzstan's mountain cat ties him to the owner. He is not modelled on any existing desktop assistant. |
+| Barsik lives under windows (z 5) | Above windows he blocked clicks on window buttons (a HIGH review finding). On the bare desktop he is always visible, and the Recycle Bin stays above him. |
+| Barsik is started in his own try/catch | He is decoration and must never break the desktop. |
+| Selection is frosted white | The owner asked for not-blue, and frosted white reads on both sky and grass. Selected icons use the same tile, so the look is consistent. |
+| The photo list lives in HTML only | `#pictures` thumbnails carry `data-full`, size and caption. The viewer reads them, and other windows refer to a photo by `data-photo` id. A site test checks every id. |
+
+**Review findings and fixes**
+
+| Severity | Finding | Fix |
+|---|---|---|
+| HIGH | Barsik blocked clicks on the bottom 64 px of windows. | Moved under windows. |
+| HIGH | Viewer arrow keys did nothing right after opening a photo, because focus sat on the frame while the listener was on the article. | Focus moves to Next on open, and an e2e check covers it. |
+| MEDIUM | Printing the résumé while its window was minimized gave a blank page. | Print CSS forces the frame visible. |
+| MEDIUM | Screen readers heard only "4 of 16" when stepping through photos. | A hidden status announces caption and position. |
+| MEDIUM (privacy) | Strangers' faces were visible in one photo. | Photo removed. |
+| LOW | Pointer capture loss left a drag hanging. | Pet and marquee also end on `lostpointercapture`. |
+| LOW | Arrow glyphs on the viewer buttons were read aloud. | Hidden from screen readers. |
+| LOW | Map imagery in a field-app screenshot had no credit. | Caption credits Esri and Maxar. |
+
+Not changed:
+- **Pet loop:** it keeps running while Barsik sleeps. It is cheap and pauses in background tabs.
+- **CSP meta tag:** still optional, as in v2.
+
+**Result:**
+- **Unit tests:** 197 passing, with 100% line coverage of `js/lib`.
+- **Browser checks:** 64 of 64 e2e checks pass at 1440 and 390 px, including reduced motion and print emulation. This is 28 earlier checks plus 36 new ones, now split into `desktop.e2e.mjs` and `v21.e2e.mjs` over a shared `harness.mjs`.
+- **Page health:** no console errors and no requests to other sites.
+
 ## 2026-10-29 — v2: XP-style desktop
 
 **Request.** The owner asked for a clean XP-style site. It should be a working desktop where folders open the right thing when clicked, with everything arranged in a logical way. The owner asked for the work to be done with the everything-claude-code workflow and its agents, and documented.

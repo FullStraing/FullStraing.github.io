@@ -1,0 +1,186 @@
+/* Desktop pet: Barsik the snow leopard. Positioned only by the transform js/ui/pet.js writes;
+   state classes (pet--walk, pet--sleep, …) and pet--left / pet--right drive the poses below. */
+
+.pet {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 5; /* above desktop icons, below windows (10+), so it never blocks a window's buttons */
+  display: block;
+  width: 72px;
+  height: 64px;
+  padding: 0;
+  border: 0;
+  border-radius: 6px;
+  background: none;
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
+  will-change: transform;
+}
+
+.pet--drag { cursor: grabbing; }
+
+.pet:focus-visible { outline: 2px dotted #fff; outline-offset: 0; box-shadow: 0 0 0 3px rgb(0 0 0 / 0.5); }
+
+.pet__art { display: block; overflow: visible; pointer-events: none; }
+
+.pet--left .pet__art { transform: scaleX(-1); }
+
+/* Pivot points, in the 72×64 drawing. */
+.pet__pose { transform-box: view-box; transform-origin: 36px 60px; }
+.pet__tail { transform-box: view-box; transform-origin: 24px 47px; }
+.pet__head { transform-box: view-box; transform-origin: 47px 40px; }
+.pet__paw { transform-box: view-box; transform-origin: 43.5px 50px; }
+.pet__leg { transform-box: fill-box; transform-origin: 50% 12%; }
+.pet__eye,
+.pet__body { transform-box: fill-box; transform-origin: 50% 60%; }
+.pet__ear { transform-box: fill-box; transform-origin: 50% 100%; }
+
+.pet__shadow { fill: rgb(0 0 0 / 0.2); }
+
+.pet__eyes-shut { display: none; }
+
+/* Always-on life: a slow tail sway and a blink. */
+.pet__tail { animation: pet-tail 2.6s ease-in-out infinite; }
+.pet__eye { animation: pet-blink 4.6s infinite; }
+
+/* Walk: alternating legs and a small bob. */
+.pet--walk .pet__leg { animation: pet-leg 0.48s ease-in-out infinite; }
+.pet--walk .pet__leg--b { animation-delay: -0.24s; }
+.pet--walk .pet__pose { animation: pet-bob 0.24s ease-in-out infinite alternate; }
+
+/* Sit, sleep: a loaf with the legs tucked under and the tail wrapped round. */
+.pet--sit .pet__pose,
+.pet--sleep .pet__pose { transform: translateY(4px); }
+.pet--sit .pet__leg,
+.pet--sleep .pet__leg { transform: scaleY(0.4); }
+.pet--sit .pet__tail,
+.pet--sleep .pet__tail { transform: rotate(-40deg); animation: none; } /* stays inside the 64px box */
+
+/* Sleep: head down, eyes shut, breathing, floating z. */
+.pet--sleep .pet__head { transform: translate(-1px, 5px) rotate(-7deg); }
+.pet--sleep .pet__eyes { display: none; }
+.pet--sleep .pet__eyes-shut { display: inline; }
+.pet--sleep .pet__body { animation: pet-breathe 3.2s ease-in-out infinite; }
+
+/* Groom: head tipped toward a raised paw. */
+.pet--groom .pet__head { transform: rotate(12deg); }
+.pet--groom .pet__paw { animation: pet-lick 0.9s ease-in-out infinite alternate; }
+
+/* React: a hop with the ears up. */
+.pet--react .pet__pose { animation: pet-hop 0.45s ease-out 1; }
+.pet--react .pet__ear { transform: scale(1.12); }
+
+/* Drag: dangling from the scruff, legs and tail hanging. */
+.pet--drag .pet__pose { transform-origin: 48px 16px; animation: pet-dangle 1.1s ease-in-out infinite alternate; }
+.pet--drag .pet__leg { transform: scaleY(1.18); animation: none; }
+.pet--drag .pet__tail { transform: rotate(-62deg); animation: none; }
+
+/* Fall: legs spread to land. */
+.pet--fall .pet__leg--a { transform: rotate(24deg); }
+.pet--fall .pet__leg--b { transform: rotate(-24deg); }
+.pet--fall .pet__tail { transform: rotate(14deg); animation: none; }
+
+.pet--drag .pet__shadow,
+.pet--fall .pet__shadow { display: none; }
+
+/* z z z, outside the drawing so it never mirrors; sits above the head on either side. */
+.pet__zzz { position: absolute; top: -14px; right: -6px; display: none; width: 24px; height: 22px; pointer-events: none; }
+
+.pet--left .pet__zzz { right: auto; left: -6px; }
+
+.pet--sleep .pet__zzz { display: block; }
+
+.pet__z {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  color: #fff;
+  font: bold 9px/1 var(--font-ui);
+  text-shadow: 1px 1px 0 #1f3f78, 0 0 2px #1f3f78;
+  opacity: 0;
+  animation: pet-z 2.7s ease-out infinite;
+}
+
+.pet__z--2 { font-size: 11px; animation-delay: 0.9s; }
+.pet__z--3 { font-size: 13px; animation-delay: 1.8s; }
+
+/* Speech bubble: the XP yellow balloon. js/ui/pet.js keeps it inside the desktop and sets --tail-x. */
+.pet__bubble {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 6;
+  width: max-content;
+  max-width: min(240px, calc(100% - 8px));
+  padding: 7px 10px 8px;
+  border: 1px solid #000;
+  border-radius: 8px;
+  background: #ffffe1;
+  box-shadow: 2px 3px 6px rgb(0 0 0 / 0.35);
+  color: var(--ink);
+  font-family: var(--font-ui);
+  font-size: 12px;
+  line-height: 1.35;
+  pointer-events: none;
+  /* Hidden by opacity, not display, so it stays a live region for screen readers. */
+  opacity: 0;
+}
+
+.pet__bubble.is-shown { opacity: 1; animation: pet-bubble-in 160ms ease-out; }
+
+.pet__bubble::before,
+.pet__bubble::after { content: ""; position: absolute; clip-path: polygon(0 0, 100% 0, 100% 100%); }
+
+.pet__bubble::before { left: calc(var(--tail-x, 50%) - 12px); bottom: -12px; width: 12px; height: 12px; background: #000; }
+
+.pet__bubble::after { left: calc(var(--tail-x, 50%) - 11px); bottom: -10px; width: 10px; height: 10px; background: #ffffe1; }
+
+.pet__bubble--below::before,
+.pet__bubble--below::after { bottom: auto; clip-path: polygon(100% 0, 100% 100%, 0 100%); }
+
+.pet__bubble--below::before { top: -12px; }
+
+.pet__bubble--below::after { top: -10px; }
+
+@keyframes pet-tail { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(-9deg); } }
+
+@keyframes pet-blink { 0%, 93%, 100% { transform: scaleY(1); } 95.5% { transform: scaleY(0.1); } }
+
+@keyframes pet-leg { 0%, 100% { transform: rotate(22deg); } 50% { transform: rotate(-22deg); } }
+
+@keyframes pet-bob { from { transform: translateY(0); } to { transform: translateY(-1.2px); } }
+
+@keyframes pet-breathe { 0%, 100% { transform: scale(1, 1); } 50% { transform: scale(1.03, 1.07); } }
+
+@keyframes pet-lick { from { transform: rotate(-58deg); } to { transform: rotate(-74deg); } }
+
+@keyframes pet-hop { 0%, 100% { transform: translateY(0); } 40% { transform: translateY(-9px); } 70% { transform: translateY(1px); } }
+
+@keyframes pet-dangle { from { transform: rotate(-6deg); } to { transform: rotate(6deg); } }
+
+@keyframes pet-z {
+  0% { opacity: 0; transform: translate(0, 4px); }
+  25% { opacity: 1; }
+  100% { opacity: 0; transform: translate(9px, -14px); }
+}
+
+@keyframes pet-bubble-in { from { opacity: 0; } to { opacity: 1; } }
+
+/* Reduced motion: no keyframes at all. The pet sits still (see js/lib/pet.js) but can be poked and dragged. */
+@media (prefers-reduced-motion: reduce) {
+  .pet,
+  .pet *,
+  .pet__bubble { animation: none !important; transition: none !important; }
+
+  .pet--sleep .pet__z { opacity: 1; }
+}
+
+@media print {
+  .pet,
+  .pet__bubble { display: none !important; }
+}

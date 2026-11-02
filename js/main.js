@@ -1,5 +1,5 @@
 import { createStore } from './lib/store.js';
-import { activeId, closeWindow, createWm, isCompact, openWindow, setViewport } from './lib/windows.js';
+import { activeId, closeWindow, createWm, frameOf, isCompact, openWindow, setViewport } from './lib/windows.js';
 import { appFromHash, hashFor } from './lib/route.js';
 import { mountWindows } from './ui/windows-view.js';
 import { LAUNCHER, mountLaunchers } from './ui/desktop.js';
@@ -9,6 +9,10 @@ import { mountMail } from './ui/mail.js';
 import { createShutdown } from './ui/shutdown.js';
 import { mountWidgets } from './ui/widgets.js';
 import { mountTabs } from './ui/tabs.js';
+import { mountMarquee } from './ui/marquee.js';
+import { mountDocument } from './ui/document.js';
+import { collectPhotos, mountViewer } from './ui/viewer.js';
+import { mountPet } from './ui/pet.js';
 
 const DEFAULT_APP = 'about';
 const DEFAULT_SIZE = { width: 640, height: 480 };
@@ -87,6 +91,16 @@ function openInitial({ store, apps, openApp }) {
   else if (!isCompact(store.getState().viewport)) openApp(DEFAULT_APP, { focus: false });
 }
 
+// Barsik is decoration: if he fails, the desktop must still work.
+function startPet(desktop) {
+  try {
+    return mountPet({ layer: desktop, getBounds: () => desktopSize(desktop) });
+  } catch (error) {
+    console.error('Barsik could not start', error);
+    return { notifyWindowOpened() {} };
+  }
+}
+
 function boot() {
   const desktop = $('desktop');
   const home = $('apps');
@@ -94,20 +108,30 @@ function boot() {
   const store = createStore(createWm(desktopSize(desktop)));
   const view = mountWindows({ layer: $('windows'), home, apps, store, fallbackFocus: () => desktop.querySelector('.icon') });
   const focusFrame = (id) => view.frameFor(id)?.focus({ preventScroll: true });
+  const pet = startPet(desktop);
+  const viewer = mountViewer({ article: $('viewer'), photos: collectPhotos($('pictures')) });
 
   const openApp = (id, { focus = true } = {}) => {
     const app = apps.get(id);
     if (!app) return;
     const { node, ...spec } = app;
+    const wasOpen = store.getState().windows.some((w) => w.id === id);
     store.update((s) => openWindow(s, spec));
     if (focus) focusFrame(id);
+    const frame = frameOf(store.getState(), id);
+    if (!wasOpen && frame) pet.notifyWindowOpened(frame.x + frame.width / 2);
   };
 
   mountLaunchers({
     desktop,
     onActivate: (launcher) => {
-      const { href, open } = launcher.dataset;
-      if (!href) openApp(open);
+      const { href, open, photo } = launcher.dataset;
+      if (photo) {
+        viewer.show(photo);
+        openApp('viewer');
+        // Focus inside the viewer so the arrow keys work straight away.
+        $('viewer').querySelector('[data-step="1"]')?.focus({ preventScroll: true });
+      } else if (!href) openApp(open);
       else if (SAFE_LINK.test(href)) window.open(href, '_blank', 'noopener');
     },
   });
@@ -119,6 +143,8 @@ function boot() {
   const mailForm = $('mail-form');
   if (mailForm) mountMail(mailForm);
   for (const tablist of document.querySelectorAll('[role="tablist"]')) mountTabs(tablist);
+  mountDocument($('resume'));
+  mountMarquee(desktop);
   startClock($('clock'));
   const touch = window.matchMedia('(pointer: coarse)').matches;
   showBalloon($('balloon'), { text: touch ? 'Tap an icon to open it.' : 'Double-click an icon to open it.' });

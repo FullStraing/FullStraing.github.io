@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+  <defs>
+    <linearGradient id="body" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f4f4f0"/><stop offset=".55" stop-color="#cfd2d6"/><stop offset="1" stop-color="#9aa0a8"/></linearGradient>
+    <linearGradient id="top" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8d939c"/><stop offset="1" stop-color="#5f656e"/></linearGradient>
+    <linearGradient id="sheet" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#dfe6ef"/></linearGradient>
+  </defs>
+  <path d="M14 5h20v15H14z" fill="url(#sheet)" stroke="#5a6b80" stroke-linejoin="round"/>
+  <path d="M17 10h14M17 14h10" stroke="#7d8fa6" stroke-width="1.4" stroke-linecap="round"/>
+  <path d="M9 18h30l3 4H6z" fill="url(#top)" stroke="#474c54" stroke-linejoin="round"/>
+  <rect x="4.5" y="21.5" width="39" height="15" rx="2.5" fill="url(#body)" stroke="#5b616a"/>
+  <path d="M7 23.5h34" stroke="#fff" stroke-width="1.2" stroke-linecap="round" opacity=".9"/>
+  <rect x="11" y="31" width="26" height="3" rx="1" fill="#4f555e"/>
+  <circle cx="38" cy="26.5" r="1.8" fill="#47c443" stroke="#23801f" stroke-width=".7"/>
+  <circle cx="37.5" cy="26" r=".6" fill="#fff" opacity=".8"/>
+  <path d="M13 32.5h22v10.5a1 1 0 0 1-1 1H14a1 1 0 0 1-1-1z" fill="url(#sheet)" stroke="#5a6b80" stroke-linejoin="round"/>
+  <path d="M16.5 37h15M16.5 40.5h11" stroke="#2463c8" stroke-width="1.4" stroke-linecap="round"/>
+</svg>
