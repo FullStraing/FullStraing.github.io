@@ -56,7 +56,6 @@
 
 .no-js #viewer { display: none; }
 
-
 /* The studio portrait is tall; keep the face in frame wherever it is cropped. */
 .sysprops__photo { object-fit: cover; object-position: 50% 18%; }
 
