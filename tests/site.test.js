@@ -114,3 +114,24 @@ test('private details and borrowed trademarks stay off the page', () => {
 test('no placeholder copy ships', () => {
   assert.doesNotMatch(html, /lorem ipsum|TODO|FIXME|\[placeholder\]/i);
 });
+
+test('the start menu has Log Off and Turn Off, and a shutdown screen', () => {
+  const menu = html.slice(html.indexOf('id="start-menu"'), html.indexOf('id="start-button"'));
+  for (const id of ['log-off', 'turn-off']) {
+    const button = menu.match(new RegExp(`<button[^>]*id="${id}"[^>]*>[\\s\\S]*?</button>`));
+    assert.ok(button, `no #${id} button in the start menu`);
+    assert.match(button[0], /<img[^>]*src="assets\/icons\/[^"]+\.svg"/, `#${id} has no icon`);
+  }
+  assert.match(menu, />Log Off</);
+  assert.match(menu, />Turn Off</);
+  const shutdown = html.slice(html.indexOf('id="shutdown"'));
+  assert.match(shutdown, /It's now safe to close this tab\./);
+});
+
+test('the start button opens the start menu', () => {
+  const button = html.match(/<button[^>]*id="start-button"[^>]*>/);
+  assert.ok(button, 'no #start-button');
+  assert.match(button[0], /aria-controls="start-menu"/);
+  assert.match(button[0], /aria-expanded="false"/);
+});
+
