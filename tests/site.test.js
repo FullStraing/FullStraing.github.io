@@ -135,3 +135,18 @@ test('the start button opens the start menu', () => {
   assert.match(button[0], /aria-expanded="false"/);
 });
 
+test('the start menu lists every desktop app, plus the four projects', () => {
+  const menu = html.slice(html.indexOf('id="start-menu"'), html.indexOf('id="start-button"'));
+  const menuTargets = new Set([...menu.matchAll(/data-open="([^"]+)"/g)].map((m) => m[1]));
+  const desktop = html.slice(0, html.indexOf('id="start-menu"'));
+  const desktopTargets = [...desktop.matchAll(/data-open="([^"]+)"/g)].map((m) => m[1]);
+  assert.ok(desktopTargets.length > 0);
+  for (const target of desktopTargets) {
+    // The Recycle Bin is desktop-only; everything else is in the menu too.
+    if (target === 'recycle') continue;
+    assert.ok(menuTargets.has(target), `desktop app "${target}" is missing from the start menu`);
+  }
+  for (const project of ['bilimtube', 'dowser', 'chess', 'krug']) {
+    assert.ok(menuTargets.has(project), `project "${project}" is missing from the start menu`);
+  }
+});
